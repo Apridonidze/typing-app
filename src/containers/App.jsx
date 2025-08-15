@@ -1,5 +1,5 @@
 import { Suspense, useEffect, useState } from "react";
-import Game from "../components/Game";
+import Game from "./Game";
 import axios from "axios";
 
 const App = () => {
