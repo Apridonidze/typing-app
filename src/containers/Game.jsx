@@ -1,7 +1,10 @@
+import Words from "../components/Words";
+
 const Game = ( { words } ) => {
     return(
         <div className="game-container">
-            {words}
+            
+            <Words words={words} />
         </div>
     );
 };
