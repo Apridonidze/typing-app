@@ -20,6 +20,12 @@ app.get('/' , (req,res) => {
 })
 
 
+app.get('/words', (req,res) => {
+    const pathFile = path.join(__dirname,'words.json')
+    res.sendFile(pathFile)
+})
+
+
 
 
 app.listen(PORT, () => {
