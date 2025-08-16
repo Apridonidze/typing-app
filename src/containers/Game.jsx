@@ -1,30 +1,24 @@
-import { useEffect, useRef, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import Words from "../components/Words";
+import Input from "../components/Input";
 
 const Game = ( { words } ) => {
 
 
     const wordRef = useRef([])
+    const letterRef = useRef([])
 
 
-
-    const [input,setInput] = useState('')
+    const [input,setInput] = useState([])
     const [inserted,setInserted] = useState([])
     const [target,setTarget] = useState(0)
 
 
 
 
-    useEffect(() => {
-
-          console.log(wordRef.current[0].textContent);
-    
-    },[words])
-
-
+  
 
     
-// TODO : fix word[target] problem
 // TODO :add styling for correct || incorrect words
 
 
@@ -37,18 +31,18 @@ const Game = ( { words } ) => {
 
             if(e.key === 'Enter' || e.key === ' '){
 
-                if(input.trim().length > 0){
+                if(input.length > 0){
                     
                 setInserted(inserted => [...inserted, input])
-                setInput('')
+                setInput([])
                 setTarget(target => target + 1)
 
 
                 if(target === words.length - 1){
-                    console.log('gamei is finishjed')
+                    console.log('game over')
+                    setTarget(target)
                     return
                 }
-
 
                 return
                 }
@@ -65,7 +59,7 @@ const Game = ( { words } ) => {
 
 
                 if(input.length < 1){
-                    setInput('')
+                    setInput([])
 
 
                     if(inserted.length> 0){
@@ -93,7 +87,7 @@ const Game = ( { words } ) => {
                 return
             }
             else {
-                setInput(input => input + e.key)
+                setInput(input => [...input ,e.key])
 
 
 
@@ -111,32 +105,32 @@ const Game = ( { words } ) => {
     },[input,target,inserted])
 
  
-        const LetterValidate = () => {
+        useEffect(() => {
 
-            const inputLastLetter = input[input.length - 1]
-            const targetLetter = words[target][input.length -1]
-
+           
 
 
-            if(!inputLastLetter && !targetLetter){
-                return
-            }
-            if(words[target] === words.length - 1){
-                console.log('game is finished')
-                return
-            }
+            const LetterValidate = () => {
+
+                
+            const inputLastLetter = letterRef.current
+            const wordLastLetter = words[target][inputLastLetter.length - 1]
+
+            //donot ise variables use directly 
 
 
-             if(inputLastLetter == targetLetter){
-
-            }else {
-
-            }
+            console.log(inputLastLetter.textContent, wordLastLetter)
+ 
 
 
+
+        
+        
         }
 
-LetterValidate()
+        return () => {LetterValidate()}
+
+        },[letterRef,input])
 
 
 
@@ -146,8 +140,8 @@ LetterValidate()
     return(
         <div className="game-container">
             Game.jsx
-            <Words words={words} wordRef={wordRef}/>
-            {"input" + input}<br />
+            <Words words={words} wordRef={wordRef} />
+            <Input input={input} letterRef={letterRef} />
             {'inserted' + inserted}<br />
         </div>
     );
