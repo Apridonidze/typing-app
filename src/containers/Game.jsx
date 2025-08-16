@@ -23,6 +23,11 @@ const Game = ( { words } ) => {
 
 
 
+    
+// TODO : fix word[target] problem
+// TODO :add styling for correct || incorrect words
+
+
     useEffect(() => {
 
         const handleInput = (e) => {
@@ -37,12 +42,17 @@ const Game = ( { words } ) => {
                 setInserted(inserted => [...inserted, input])
                 setInput('')
                 setTarget(target => target + 1)
-                return
-                }else {
-                    return
 
+
+                if(target === words.length - 1){
+                    console.log('gamei is finishjed')
+                    return
                 }
 
+
+                return
+                }
+                
 
             }else if (e.key === 'Backspace' ){
 
@@ -70,6 +80,7 @@ const Game = ( { words } ) => {
                     setTarget(0)
                     return
                 }
+                
 
                     return
                 }
@@ -90,10 +101,8 @@ const Game = ( { words } ) => {
 
 
 
-
             
         }
-        
 
 
         window.addEventListener('keydown', handleInput)
@@ -112,18 +121,27 @@ const Game = ( { words } ) => {
             if(!inputLastLetter && !targetLetter){
                 return
             }
+            if(words[target] === words.length - 1){
+                console.log('game is finished')
+                return
+            }
 
 
              if(inputLastLetter == targetLetter){
-                console.log('true letters ' + inputLastLetter, targetLetter)
+
             }else {
-                console.log('false letters ' + inputLastLetter, targetLetter)
+
             }
 
 
         }
 
 LetterValidate()
+
+
+
+
+
 
     return(
         <div className="game-container">
