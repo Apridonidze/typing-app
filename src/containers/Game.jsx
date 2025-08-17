@@ -1,13 +1,12 @@
 import { useLayoutEffect, useEffect, useRef, useState } from "react";
 import Words from "../components/Words";
 import Input from "../components/Input";
-
+import Inserted from "../components/Inserted";
 const Game = ( { words } ) => {
 
 
     const wordRef = useRef([])
     const letterRef = useRef([])
-
 
     const [input,setInput] = useState([])
     const [inserted,setInserted] = useState([])
@@ -15,6 +14,8 @@ const Game = ( { words } ) => {
 
     const [targetWord, setTargetWord] = useState('')
     const [targetLetter, setTargetLetter] = useState(0) 
+
+
 
 
 
@@ -44,10 +45,16 @@ const Game = ( { words } ) => {
                 if(input[input.length - 1]  === targetWord[input.length - 1]){
                 
                     letterRef.current[input.length - 1].classList.add('text-success');
+
                 
+                    
                 }else {
 
                     letterRef.current[input.length - 1].classList.add('text-danger');
+
+
+                    console.log(styledInsert)
+                    
                 
                 }
 
@@ -73,6 +80,8 @@ const Game = ( { words } ) => {
 
 
         const handleInput = (e) => {
+
+            console.log('game started') //change it with setgamestarted variable
             
 
             const regex = /^[a-zA-Z]+$/
@@ -81,8 +90,11 @@ const Game = ( { words } ) => {
             if(e.key === 'Enter' || e.key === ' '){
 
                 if(input.length > 0){
+                
                     
-                setInserted(inserted => [...inserted, letterRef.current[target].textContent])
+                        //letterRef.current[i].textContent
+                    
+
                 setInput([])
                 setTarget(target => target + 1)
 
@@ -167,8 +179,9 @@ const Game = ( { words } ) => {
         <div className="game-container">
             Game.jsx
             <Words words={words} wordRef={wordRef} />
+            <Inserted inserted={inserted} />
             <Input input={input} letterRef={letterRef} targetLetter={targetLetter} />
-            {'inserted' + inserted}<br />
+            {styledInsert}
             
         </div>
     );
