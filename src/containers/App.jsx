@@ -12,6 +12,9 @@ const App = () => {
   //TODO : finish UI design 
 
 
+  //TODO : add screen for tables and mobiles so they cant play
+  
+
 
   const [words,setWords] = useState([''])
 

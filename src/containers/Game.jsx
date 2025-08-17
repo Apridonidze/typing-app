@@ -16,6 +16,9 @@ const Game = ( { words } ) => {
     const [targetLetter, setTargetLetter] = useState(0) 
 
 
+    const [insertedSpans, setInsertedSpans] = useState({textContent : null , className : null })
+
+
 
 
 
@@ -27,49 +30,49 @@ const Game = ( { words } ) => {
              setTargetWord(targetWord => targetWord = wordRef.current[target].textContent)
 
 
+             
+
             if(targetWord){
 
                 
+                const lastIndex = input.length - 1
 
-                const inputLastLetter = input[input.length - 1]
-                const targetLastLetter = targetWord[input.length - 1]
+                const inputLastLetter = input[lastIndex]
+                const targetLastLetter = targetWord[lastIndex]
 
-                
 
+               
                 if(!inputLastLetter || !targetLastLetter ){
                     return
                 }
-                
 
 
-                if(input[input.length - 1]  === targetWord[input.length - 1]){
+                if(inputLastLetter  === targetWord[lastIndex]){
                 
-                    letterRef.current[input.length - 1].classList.add('text-success');
 
-                
+                  letterRef.current[lastIndex].classList.add('text-success')
+
+
+
+                  
+                    
                     
                 }else {
-
-                    letterRef.current[input.length - 1].classList.add('text-danger');
-
-
-                    console.log(styledInsert)
-                    
-                
+                    letterRef.current[lastIndex].classList.add('text-danger')
                 }
+                // **ADD** - const className = letterref.current.classlist & letter.current and update it to state
 
+                
+                setTargetLetter(targetLetter => targetLetter = inputLastLetter)
 
-
-                setTargetLetter(targetLetter => targetLetter = input[input.length - 1])
-
-
+                
             }
             return
 
 
         }
 
-    },[words,targetWord,target,input,letterRef,wordRef])
+    },[words,targetWord,target,input,letterRef,wordRef]) // ***DELETE*** - delete unwanted variables from here
 
 
 
@@ -171,7 +174,7 @@ const Game = ( { words } ) => {
         window.addEventListener('keydown', handleInput)
         return () => {window.removeEventListener('keydown',handleInput)}
 
-    },[input,target,inserted])
+    },[input,target,inserted]) // ***DELETE*** - delete unwanted variables from here
 
  
 
@@ -180,12 +183,16 @@ const Game = ( { words } ) => {
             Game.jsx
             <Words words={words} wordRef={wordRef} />
             <Inserted inserted={inserted} />
-            <Input input={input} letterRef={letterRef} targetLetter={targetLetter} />
-            {styledInsert}
-            
+            <Input input={input} letterRef={letterRef} targetLetter={targetLetter} />  
+           
         </div>
     );
 };
 
+
+//TODO : fix bugs & add functions that are commented in code
+//TODO : import gameStart & gameEnd variables
+
+    
 
 export default Game;
