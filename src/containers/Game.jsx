@@ -1,4 +1,4 @@
-import { use, useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useEffect, useRef, useState } from "react";
 import Words from "../components/Words";
 import Input from "../components/Input";
 
@@ -13,18 +13,67 @@ const Game = ( { words } ) => {
     const [inserted,setInserted] = useState([])
     const [target,setTarget] = useState(0)
 
+    const [targetWord, setTargetWord] = useState('')
+    const [targetLetter, setTargetLetter] = useState(0) 
 
-
-
-  
-
-    
-// TODO :add styling for correct || incorrect words
 
 
     useEffect(() => {
 
+
+         if(wordRef.current || letterRef.current){
+             
+             setTargetWord(targetWord => targetWord = wordRef.current[target].textContent)
+
+
+            if(targetWord){
+
+                
+
+                const inputLastLetter = input[input.length - 1]
+                const targetLastLetter = targetWord[input.length - 1]
+
+                
+
+                if(!inputLastLetter || !targetLastLetter ){
+                    return
+                }
+                
+
+
+                if(input[input.length - 1]  === targetWord[input.length - 1]){
+                
+                    letterRef.current[input.length - 1].classList.add('text-success');
+                
+                }else {
+
+                    letterRef.current[input.length - 1].classList.add('text-danger');
+                
+                }
+
+
+
+                setTargetLetter(targetLetter => targetLetter = input[input.length - 1])
+
+
+            }
+            return
+
+
+        }
+
+    },[words,targetWord,target,input,letterRef,wordRef])
+
+
+
+
+    useEffect(() => {
+
+
+
+
         const handleInput = (e) => {
+            
 
             const regex = /^[a-zA-Z]+$/
 
@@ -33,14 +82,16 @@ const Game = ( { words } ) => {
 
                 if(input.length > 0){
                     
-                setInserted(inserted => [...inserted, input])
+                setInserted(inserted => [...inserted, letterRef.current[target].textContent])
                 setInput([])
                 setTarget(target => target + 1)
 
 
                 if(target === words.length - 1){
-                    console.log('game over')
+                    console.log('game over') //setgame over variable
                     setTarget(target)
+                    setInput([])
+                    setInserted(inserted)
                     return
                 }
 
@@ -87,8 +138,14 @@ const Game = ( { words } ) => {
                 return
             }
             else {
+                
+                
                 setInput(input => [...input ,e.key])
 
+                if(input.length > wordRef.current[target].textContent.length - 1){
+                    setInput(input.slice(0, wordRef.current[target].textContent.length))
+                    return
+                }
 
 
             }
@@ -105,44 +162,14 @@ const Game = ( { words } ) => {
     },[input,target,inserted])
 
  
-        useEffect(() => {
-
-           
-
-
-            const LetterValidate = () => {
-
-                
-            const inputLastLetter = letterRef.current
-            const wordLastLetter = words[target][inputLastLetter.length - 1]
-
-            //donot ise variables use directly 
-
-
-            console.log(inputLastLetter.textContent, wordLastLetter)
- 
-
-
-
-        
-        
-        }
-
-        return () => {LetterValidate()}
-
-        },[letterRef,input])
-
-
-
-
-
 
     return(
         <div className="game-container">
             Game.jsx
             <Words words={words} wordRef={wordRef} />
-            <Input input={input} letterRef={letterRef} />
+            <Input input={input} letterRef={letterRef} targetLetter={targetLetter} />
             {'inserted' + inserted}<br />
+            
         </div>
     );
 };
