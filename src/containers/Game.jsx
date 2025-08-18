@@ -2,14 +2,13 @@ import { useLayoutEffect, useEffect, useRef, useState } from "react";
 import Words from "../components/Words";
 import Input from "../components/Input";
 import Inserted from "../components/Inserted";
-const Game = ( { words ,setIsGameFinished } ) => {
+const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , correctCount , inserted , setIncorrectCount, incorrectCount, setIsGameStarted, isGameStarted} ) => {
 
 
     const wordRef = useRef([])
     const letterRef = useRef([])
 
     const [input,setInput] = useState([])
-    const [inserted,setInserted] = useState([])
     const [target,setTarget] = useState(0)
 
     const [targetWord, setTargetWord] = useState('')
@@ -25,6 +24,8 @@ const Game = ( { words ,setIsGameFinished } ) => {
          if(wordRef.current || letterRef.current){
              
              setTargetWord(targetWord => targetWord = wordRef.current[target].textContent)
+
+             
 
 
              
@@ -49,14 +50,16 @@ const Game = ( { words ,setIsGameFinished } ) => {
                 if(inputLastLetter  === targetWord[lastIndex]){
                 
 
-                  letterRef.current[lastIndex].classList.add('text-success')
-
-
-                  
-                    
+                  letterRef.current[lastIndex].classList.add('text-success')    
+                 
+              
                     
                 }else {
                     letterRef.current[lastIndex].classList.add('text-danger')
+
+
+                    
+                    
                 }
                 
 
@@ -82,17 +85,28 @@ const Game = ( { words ,setIsGameFinished } ) => {
 
 
         const handleInput = (e) => {
+             setIsGameStarted(isGameStarted =>  isGameStarted =  true)
 
             const regex = /^[a-zA-Z]+$/
+
+           
 
 
             if(e.key === 'Enter' || e.key === ' '){
 
                 if(input.length > 0){
+
+                    
+                const correctWord = wordRef.current[target].textContent
                 const lastIndex = input.length - 1
-                    
-                        //letterRef.current[i].textContent
-                    
+                
+                if(input.join('') === correctWord){
+                    setCorrectCount(correctCount => correctCount + 1)
+                }else {
+                    setIncorrectCount(incorrectCount => incorrectCount + 1)
+                }
+
+
 
                 setInput([])
                 setTarget(target => target + 1)
@@ -104,6 +118,9 @@ const Game = ( { words ,setIsGameFinished } ) => {
                     setTarget(target)
                     setInput([])
                     setInserted(inserted)
+
+                    console.log(inserted)
+
                     return
                 }
 
@@ -171,7 +188,7 @@ const Game = ( { words ,setIsGameFinished } ) => {
         window.addEventListener('keydown', handleInput)
         return () => {window.removeEventListener('keydown',handleInput)}
 
-    },[input,target])
+    },[input,target,isGameStarted])
 
 
 

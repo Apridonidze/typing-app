@@ -6,7 +6,7 @@ const Input = ( { input, letterRef, handleRedo }  ) => {
            
                 {input.map((letter,letterId) => (
                 
-                    <span className="mx-1 text-primary" key={letterId} ref={e => (letterRef.current[letterId] = e)}>{letter}</span>
+                    <span className=" text-primary" key={letterId} ref={e => (letterRef.current[letterId] = e)}>{letter}</span>
                 
                 ))}
            
@@ -17,7 +17,7 @@ const Input = ( { input, letterRef, handleRedo }  ) => {
 
            <div className="input-fields">
            
-               <input type="text" value={input} readOnly/>
+               <input type="text" value={input.join('')} readOnly/>
                <button onClick={handleRedo}>Redo</button>
            
            </div>

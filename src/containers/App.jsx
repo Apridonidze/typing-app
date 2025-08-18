@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import Game from "./Game";
 import Final from "./Final";
+import Timer from "../components/Timer";
+
+
 import axios from "axios";
 
 const App = () => {
@@ -19,7 +22,29 @@ const App = () => {
 
   const [words,setWords] = useState([''])
   const [isGameFinished, setIsGameFinished] = useState(false)
+  const [isGameStarted, setIsGameStarted] = useState(false)
+  const [inserted,setInserted] = useState([])
 
+    const [correctCount,setCorrectCount] = useState(0)
+    const [incorrectCount,setIncorrectCount] = useState(0)
+
+
+    const [seconds,setSeconds] = useState(0)
+    const [minutes, setMinutes] = useState(0)
+    const [secondsOutput, setsecondsOutput] = useState('00')
+    const [minutesOutput, setMinutesOutput] = useState('00')
+    const [inTime,setInTime] = useState(true)
+
+
+    useEffect(() => {
+
+      setCorrectCount(correctCount)
+      setIncorrectCount(incorrectCount)
+
+    },[correctCount,incorrectCount])
+
+
+   
 
   useEffect(() => {
 
@@ -54,11 +79,13 @@ const App = () => {
     <div className="app-container">
       App.jsx
 
-
-{!isGameFinished ? <Game words={words} setIsGameFinished={setIsGameFinished} />  : <Final />}
-      
+{!isGameFinished ? <Game words={words} setIsGameFinished={setIsGameFinished} setCorrectCount={setCorrectCount} setInserted={setInserted} correctCount={correctCount} inserted={inserted} setIncorrectCount={setIncorrectCount} incorrectCount={incorrectCount} setIsGameStarted={setIsGameStarted} /> 
+ : <Final correctCount={correctCount} incorrectCount={incorrectCount} inTime={inTime} minutes={minutes} seconds={seconds}/>}
+    
+    <Timer />
 
     </div>
+    
   );
 };
 
