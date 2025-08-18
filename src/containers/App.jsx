@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Game from "./Game";
+import Final from "./Final";
 import axios from "axios";
 
 const App = () => {
@@ -17,7 +18,6 @@ const App = () => {
 
 
   const [words,setWords] = useState([''])
-
   const [isGameFinished, setIsGameFinished] = useState(false)
 
 
@@ -55,7 +55,7 @@ const App = () => {
       App.jsx
 
 
-{!isGameFinished ? <Game words={words} setIsGameFinished={setIsGameFinished} />  : <h1>finalPage</h1>}
+{!isGameFinished ? <Game words={words} setIsGameFinished={setIsGameFinished} />  : <Final />}
       
 
     </div>
