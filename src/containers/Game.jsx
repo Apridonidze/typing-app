@@ -58,8 +58,6 @@ const Game = ( { words ,setIsGameFinished } ) => {
                 }else {
                     letterRef.current[lastIndex].classList.add('text-danger')
                 }
-                // **ADD** - 
-                
                 
 
 
@@ -74,8 +72,7 @@ const Game = ( { words ,setIsGameFinished } ) => {
 
         }
 
-    },[words,targetWord,target,input,letterRef,wordRef]) // ***DELETE*** - delete unwanted variables from here
-
+    },[input,])
 
     
 
@@ -177,14 +174,40 @@ const Game = ( { words ,setIsGameFinished } ) => {
     },[input,target])
 
 
-    
+
+    const handleRedo = () => {
+
+
+        if(input.length > 0){
+
+                const lastIndex = input.length - 1
+                    
+                        //letterRef.current[i].textContent
+                    
+
+                setInput([])
+                setTarget(target => target + 1)
+                setInserted(inserted => [...inserted , {text : input ,className : letterRef.current[lastIndex].classList }])
+
+
+                if(target + 1 == words.length){
+                    setIsGameFinished(true)
+                    setTarget(target)
+                    setInput([])
+                    setInserted(inserted)
+                    return
+                }
+            }
+
+}
+
 
     return(
         <div className="game-container">
             Game.jsx
             <Words words={words} wordRef={wordRef} />
             <Inserted  inserted={inserted}/>
-            <Input input={input} letterRef={letterRef} targetLetter={targetLetter} />  
+            <Input input={input} letterRef={letterRef} targetLetter={targetLetter}  handleRedo={handleRedo} />  
          
 
 
@@ -193,10 +216,5 @@ const Game = ( { words ,setIsGameFinished } ) => {
     );
 };
 
-
-//TODO : fix bugs & add functions that are commented in code
-//TODO : import gameStart & gameEnd variables
-
-    
 
 export default Game;
