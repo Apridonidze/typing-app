@@ -18,6 +18,8 @@ const App = () => {
 
   const [words,setWords] = useState([''])
 
+  const [isGameFinished, setIsGameFinished] = useState(false)
+
 
   useEffect(() => {
 
@@ -52,7 +54,9 @@ const App = () => {
     <div className="app-container">
       App.jsx
 
-      <Game words={words} />
+
+{!isGameFinished ? <Game words={words} setIsGameFinished={setIsGameFinished} />  : <h1>finalPage</h1>}
+      
 
     </div>
   );

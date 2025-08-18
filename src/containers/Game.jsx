@@ -2,7 +2,7 @@ import { useLayoutEffect, useEffect, useRef, useState } from "react";
 import Words from "../components/Words";
 import Input from "../components/Input";
 import Inserted from "../components/Inserted";
-const Game = ( { words } ) => {
+const Game = ( { words ,setIsGameFinished } ) => {
 
 
     const wordRef = useRef([])
@@ -14,9 +14,6 @@ const Game = ( { words } ) => {
 
     const [targetWord, setTargetWord] = useState('')
     const [targetLetter, setTargetLetter] = useState(0) 
-
-
-    const [insertedSpans, setInsertedSpans] = useState({textContent : null , className : null })
 
 
 
@@ -47,11 +44,12 @@ const Game = ( { words } ) => {
                 }
 
 
+                
+
                 if(inputLastLetter  === targetWord[lastIndex]){
                 
 
                   letterRef.current[lastIndex].classList.add('text-success')
-
 
 
                   
@@ -60,7 +58,11 @@ const Game = ( { words } ) => {
                 }else {
                     letterRef.current[lastIndex].classList.add('text-danger')
                 }
-                // **ADD** - const className = letterref.current.classlist & letter.current and update it to state
+                // **ADD** - 
+                
+                
+
+
 
                 
                 setTargetLetter(targetLetter => targetLetter = inputLastLetter)
@@ -75,7 +77,7 @@ const Game = ( { words } ) => {
     },[words,targetWord,target,input,letterRef,wordRef]) // ***DELETE*** - delete unwanted variables from here
 
 
-
+    
 
     useEffect(() => {
 
@@ -84,26 +86,24 @@ const Game = ( { words } ) => {
 
         const handleInput = (e) => {
 
-            console.log('game started') //change it with setgamestarted variable
-            
-
             const regex = /^[a-zA-Z]+$/
 
 
             if(e.key === 'Enter' || e.key === ' '){
 
                 if(input.length > 0){
-                
+                const lastIndex = input.length - 1
                     
                         //letterRef.current[i].textContent
                     
 
                 setInput([])
                 setTarget(target => target + 1)
+                setInserted(inserted => [...inserted , {text : input ,className : letterRef.current[lastIndex].classList }])
 
 
-                if(target === words.length - 1){
-                    console.log('game over') //setgame over variable
+                if(target + 1 == words.length){
+                    setIsGameFinished(true)
                     setTarget(target)
                     setInput([])
                     setInserted(inserted)
@@ -130,7 +130,7 @@ const Game = ( { words } ) => {
 
                     if(inserted.length> 0){
 
-                    setInserted(inserted.slice(0,-1))
+                    setInserted(inserted => [...inserted , inserted.slice(0, -1)])
                     setInput(inserted[inserted.length - 1])
                     setTarget(target => target = (inserted.length - 1))
                 }
@@ -174,17 +174,21 @@ const Game = ( { words } ) => {
         window.addEventListener('keydown', handleInput)
         return () => {window.removeEventListener('keydown',handleInput)}
 
-    },[input,target,inserted]) // ***DELETE*** - delete unwanted variables from here
+    },[input,target])
 
- 
+
+    
 
     return(
         <div className="game-container">
             Game.jsx
             <Words words={words} wordRef={wordRef} />
-            <Inserted inserted={inserted} />
+            <Inserted  inserted={inserted}/>
             <Input input={input} letterRef={letterRef} targetLetter={targetLetter} />  
-           
+         
+
+
+
         </div>
     );
 };
