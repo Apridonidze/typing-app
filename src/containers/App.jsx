@@ -8,9 +8,7 @@ import axios from "axios";
 
 const App = () => {
 
-  //TODO : make timer
   //TODO : make game length properties comonents : time & words length
-  //TODO :add game finish screeen
   //TODO : calculate wpm w/m
   //TODO : create footer component
   //TODO : finish UI design 

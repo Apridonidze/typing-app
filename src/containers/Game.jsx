@@ -142,11 +142,12 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , correc
                     setInput([])
 
 
-                    if(inserted.length> 0){
+                    console.log(inserted)
+                    if(inserted.length > 0){
 
-                    setInserted(inserted => [...inserted , inserted.slice(0, -1)])
-                    setInput(inserted[inserted.length - 1])
-                    setTarget(target => target = (inserted.length - 1))
+                        setInserted(inserted => [...inserted , inserted.slice(0, -1)])
+                        setTarget(target => target = (inserted.length - 1))
+                        setInput(inserted[inserted.length - 1][text][text.length -1]) // fix this line
                 }
 
 

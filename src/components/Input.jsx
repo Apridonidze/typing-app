@@ -12,9 +12,6 @@ const Input = ( { input, letterRef, handleRedo }  ) => {
            
             </div>
 
-
-
-
            <div className="input-fields">
            
                <input type="text" value={input.join('')} readOnly/>

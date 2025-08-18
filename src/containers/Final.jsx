@@ -1,5 +1,7 @@
 const Final = ( {correctCount ,incorrectCount, inTime, minutes ,seconds} ) => {
 
+
+    //TODO : calculate wpm
     return(
         <div className="final-container">
             Final.jsx
