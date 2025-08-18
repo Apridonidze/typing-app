@@ -40,8 +40,12 @@ const App = () => {
 
       setCorrectCount(correctCount)
       setIncorrectCount(incorrectCount)
+      setIsGameStarted(isGameStarted)
+      setIsGameFinished(isGameFinished)
 
-    },[correctCount,incorrectCount])
+
+
+    },[correctCount,incorrectCount,isGameStarted, isGameFinished])
 
 
    
@@ -82,8 +86,7 @@ const App = () => {
 {!isGameFinished ? <Game words={words} setIsGameFinished={setIsGameFinished} setCorrectCount={setCorrectCount} setInserted={setInserted} correctCount={correctCount} inserted={inserted} setIncorrectCount={setIncorrectCount} incorrectCount={incorrectCount} setIsGameStarted={setIsGameStarted} /> 
  : <Final correctCount={correctCount} incorrectCount={incorrectCount} inTime={inTime} minutes={minutes} seconds={seconds}/>}
     
-    <Timer />
-
+    <Timer isGameStarted={isGameStarted} isGameFinished={isGameFinished} seconds={seconds} setSeconds={setSeconds} minutes={minutes} setMinutes={setMinutes } secondsOutput={secondsOutput} setsecondsOutput={setsecondsOutput } minutesOutput={minutesOutput}  setMinutesOutput={setMinutesOutput} inTime={inTime} setInTime={setInTime} />
     </div>
     
   );
