@@ -1,16 +1,15 @@
-import { useEffect, useState } from "react";
 import Game from "./Game";
 import Final from "./Final";
 import Timer from "../components/Timer";
+import Header from "../components/Header";
 
-
+import { useEffect, useReducer, useRef, useState } from "react";
 import axios from "axios";
 
 const App = () => {
 
-  //TODO : make game length properties comonents : time & words length
-  //TODO : calculate wpm w/m
-  //TODO : create footer component
+  //TODO : Finish Header.jsx
+  //TODO : create footer component (with refresh button and comments)
   //TODO : finish UI design 
 
 
@@ -42,11 +41,11 @@ const App = () => {
       setIsGameFinished(isGameFinished)
 
 
-
     },[correctCount,incorrectCount,isGameStarted, isGameFinished])
+ 
 
 
-   
+
 
   useEffect(() => {
 
@@ -60,7 +59,7 @@ const App = () => {
 
         const data = resp.data
         const shuffledArray = [...data].sort(() => Math.random() - 0.5);
-        const slicedArray = shuffledArray.slice(0, 10) // change 10 with custom number
+        const slicedArray = shuffledArray.slice(0, 10)
 
 
         setWords(slicedArray)
@@ -80,6 +79,7 @@ const App = () => {
   return(
     <div className="app-container">
       App.jsx
+      <Header />
 
 {!isGameFinished ? <Game words={words} setIsGameFinished={setIsGameFinished} setCorrectCount={setCorrectCount} setInserted={setInserted} correctCount={correctCount} inserted={inserted} setIncorrectCount={setIncorrectCount} incorrectCount={incorrectCount} setIsGameStarted={setIsGameStarted} /> 
  : <Final correctCount={correctCount} incorrectCount={incorrectCount} inTime={inTime} minutesOutput={minutesOutput} secondsOutput={secondsOutput}/>}
