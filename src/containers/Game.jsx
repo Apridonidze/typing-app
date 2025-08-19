@@ -87,6 +87,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , correc
         const handleInput = (e) => {
              setIsGameStarted(isGameStarted =>  isGameStarted =  true)
 
+
             const regex = /^[a-zA-Z]+$/
 
          
