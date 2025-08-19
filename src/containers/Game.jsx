@@ -89,7 +89,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , correc
 
             const regex = /^[a-zA-Z]+$/
 
-           
+         
 
 
             if(e.key === 'Enter' || e.key === ' '){
@@ -142,13 +142,24 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , correc
                     setInput([])
 
 
-                    console.log(inserted)
+
                     if(inserted.length > 0){
 
-                        setInserted(inserted => [...inserted , inserted.slice(0, -1)])
-                        setTarget(target => target = (inserted.length - 1))
-                        setInput(inserted[inserted.length - 1][text][text.length -1]) // fix this line
-                }
+                        setInserted(inserted.slice(0, -1))
+                        setTarget(target => target = inserted.length -1 )
+                        setInput(inserted[inserted.length - 1].text) 
+                        
+                       if(inserted.length > 0){
+
+                        setInput(inserted[inserted.length - 1].text)
+
+                       }else {
+                        setInput([])
+                       }
+
+
+                } 
+                
 
 
                 if(target < 1){
@@ -179,7 +190,6 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , correc
 
 
             }
-
 
 
             

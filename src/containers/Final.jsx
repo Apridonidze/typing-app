@@ -9,6 +9,9 @@ const Final = ( {correctCount ,incorrectCount, inTime, minutes ,seconds} ) => {
             <h1>inCorerct Word Count :{incorrectCount}</h1>
 
             {inTime ? <h1>You Finished in {minutes}, {seconds - 1}</h1> : <h1>You Did Not Make It In Time</h1>}
+
+
+            {/* add start another game button here (refreshes tab) */}
         </div>
     );
 
