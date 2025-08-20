@@ -1,19 +1,20 @@
 import Game from "./Game";
 import Final from "./Final";
 import Header from "../components/Header";
-
 import { use, useEffect, useReducer, useRef, useState } from "react";
 import axios from "axios";
 
 const App = () => {
 
-  //TODO : Finish Header.jsx
   //TODO : create footer component (with refresh button and comments)
   //TODO : finish UI design 
 
+  
+  //TODO : calculate wpm and send it to Final.jsx
 
   //TODO : add screen for tables and mobiles so they cant play
-  
+
+  const divRef = useRef(null)
 
   const [isFocused, setIsFocused] = useState(false)
 
@@ -40,9 +41,10 @@ const App = () => {
       setIncorrectCount(incorrectCount)
       setIsGameStarted(isGameStarted)
       setIsGameFinished(isGameFinished)
+      setIsFocused(isFocused)
 
 
-    },[correctCount,incorrectCount,isGameStarted, isGameFinished])
+    },[correctCount,incorrectCount,isGameStarted, isGameFinished, isFocused])
  
     
 const handleGameLength = (e) => {
@@ -85,9 +87,12 @@ const handleGameLength = (e) => {
 
       <Header handleGameLength={handleGameLength} isGameStarted={isGameStarted} isGameFinished={isGameFinished} seconds={seconds} setSeconds={setSeconds} minutes={minutes} setMinutes={setMinutes } secondsOutput={secondsOutput} setsecondsOutput={setsecondsOutput } minutesOutput={minutesOutput}  setMinutesOutput={setMinutesOutput} inTime={inTime} setInTime={setInTime}/> 
 
-{!isGameFinished ? <Game words={words} setIsGameFinished={setIsGameFinished} setCorrectCount={setCorrectCount} setInserted={setInserted} correctCount={correctCount} inserted={inserted} setIncorrectCount={setIncorrectCount} incorrectCount={incorrectCount} setIsGameStarted={setIsGameStarted} /> 
+{!isGameFinished ? <Game words={words} setIsGameFinished={setIsGameFinished} setCorrectCount={setCorrectCount} setInserted={setInserted} correctCount={correctCount} inserted={inserted} setIncorrectCount={setIncorrectCount} incorrectCount={incorrectCount} setIsGameStarted={setIsGameStarted} isFocused={isFocused} setIsFocused={setIsFocused} divRef={divRef} /> 
  : <Final correctCount={correctCount} incorrectCount={incorrectCount} inTime={inTime} minutesOutput={minutesOutput} secondsOutput={secondsOutput}/>}
     
+    
+
+
     </div>
     
   );

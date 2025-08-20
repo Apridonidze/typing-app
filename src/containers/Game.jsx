@@ -1,8 +1,11 @@
-import { useLayoutEffect, useEffect, useRef, useState } from "react";
+import {  useEffect, useRef, useState } from "react";
+
 import Words from "../components/Words";
 import Input from "../components/Input";
 import Inserted from "../components/Inserted";
-const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , correctCount , inserted , setIncorrectCount, incorrectCount, setIsGameStarted, isGameStarted } ) => {
+import FocusWindow from "../components/FocusWindow";
+
+const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , correctCount , inserted , setIncorrectCount, incorrectCount, setIsGameStarted, isGameStarted, isFocused, setIsFocused ,divRef } ) => {
 
 
     const wordRef = useRef([])
@@ -15,7 +18,6 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , correc
     const [targetLetter, setTargetLetter] = useState(0) 
 
 
-    const gameWindow = document.getElementsByClassName('game-container')
 
 
     //add focus || blur function on window and prevent user from typing when he isnot focused on it
@@ -67,13 +69,13 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , correc
     useEffect(() => {
 
         const handleInput = (e) => {
+
+
+            if(isFocused){
              setIsGameStarted(isGameStarted =>  isGameStarted =  true)
 
 
             const regex = /^[a-zA-Z]+$/
-
-         
-
 
             if(e.key === 'Enter' || e.key === ' '){
 
@@ -168,12 +170,12 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , correc
             }
             
         }
-
+    }
 
         window.addEventListener('keydown', handleInput)
         return () => {window.removeEventListener('keydown',handleInput)}
 
-    },[input,target,isGameStarted])
+    },[input,target,isGameStarted,isFocused])
 
 
 
@@ -202,9 +204,10 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , correc
 
 
     return(
-        <div className="game-container">
+        <div className="game-container" ref={divRef} tabIndex={0} onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)} >
 
             Game.jsx
+            {/* is not focused display <FocusWindow isFocused={isFocused} /> */}
             <Words words={words} wordRef={wordRef} />
             <Inserted  inserted={inserted}/>
             <Input input={input} letterRef={letterRef} targetLetter={targetLetter}  handleRedo={handleRedo} />  

@@ -1,7 +1,6 @@
-
-
 import Timer from "../components/Timer";
 import Buttons from "./Buttons";
+
 const Header = ( {  handleGameLength, isGameStarted,isGameFinished,seconds,setSeconds,minutes,setMinutes,secondsOutput,setsecondsOutput,minutesOutput,setMinutesOutput,inTime,setInTime} ) => {
     return (
         <div className="header-container">
