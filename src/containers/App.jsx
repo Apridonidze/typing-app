@@ -1,18 +1,21 @@
+import axios from "axios";
+
 import Game from "./Game";
 import Final from "./Final";
 import Header from "../components/Header";
-import { use, useEffect, useReducer, useRef, useState } from "react";
-import axios from "axios";
+import { useEffect, useRef, useState } from "react";
+
 
 const App = () => {
 
   //TODO : create footer component (with refresh button and comments)
   //TODO : finish UI design 
-
   
   //TODO : calculate wpm and send it to Final.jsx
 
   //TODO : add screen for tables and mobiles so they cant play
+
+  //TODO : add error page & display axios error 
 
   const divRef = useRef(null)
 
@@ -24,15 +27,15 @@ const App = () => {
   const [isGameStarted, setIsGameStarted] = useState(false)
   const [inserted,setInserted] = useState([])
 
-    const [correctCount,setCorrectCount] = useState(0)
-    const [incorrectCount,setIncorrectCount] = useState(0)
+  const [correctCount,setCorrectCount] = useState(0)
+  const [incorrectCount,setIncorrectCount] = useState(0)
 
 
-    const [seconds,setSeconds] = useState(0)
-    const [minutes, setMinutes] = useState(0)
-    const [secondsOutput, setsecondsOutput] = useState('00')
-    const [minutesOutput, setMinutesOutput] = useState('00')
-    const [inTime,setInTime] = useState(true)
+  const [seconds,setSeconds] = useState(0)
+  const [minutes, setMinutes] = useState(0)
+  const [secondsOutput, setsecondsOutput] = useState('00')
+  const [minutesOutput, setMinutesOutput] = useState('00')
+  const [inTime,setInTime] = useState(true)
 
 
     useEffect(() => {
@@ -68,7 +71,7 @@ const handleGameLength = (e) => {
           setWords(slicedArray)
 
       }).catch((err) => {
-        console.log(err)
+        console.log(err) //set error in setError
       })
 
 
@@ -89,9 +92,6 @@ const handleGameLength = (e) => {
 
 {!isGameFinished ? <Game words={words} setIsGameFinished={setIsGameFinished} setCorrectCount={setCorrectCount} setInserted={setInserted} correctCount={correctCount} inserted={inserted} setIncorrectCount={setIncorrectCount} incorrectCount={incorrectCount} setIsGameStarted={setIsGameStarted} isFocused={isFocused} setIsFocused={setIsFocused} divRef={divRef} /> 
  : <Final correctCount={correctCount} incorrectCount={incorrectCount} inTime={inTime} minutesOutput={minutesOutput} secondsOutput={secondsOutput}/>}
-    
-    
-
 
     </div>
     
@@ -99,4 +99,4 @@ const handleGameLength = (e) => {
 };
 
 
-export default App
+export default App;

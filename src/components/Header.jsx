@@ -6,9 +6,10 @@ const Header = ( {  handleGameLength, isGameStarted,isGameFinished,seconds,setSe
         <div className="header-container">
             <h1>typing-app</h1>
 
-            
-            <Buttons handleGameLength={handleGameLength} />
-            <Timer isGameStarted={isGameStarted} isGameFinished={isGameFinished} seconds={seconds} setSeconds={setSeconds} minutes={minutes} setMinutes={setMinutes } secondsOutput={secondsOutput} setsecondsOutput={setsecondsOutput } minutesOutput={minutesOutput}  setMinutesOutput={setMinutesOutput} inTime={inTime} setInTime={setInTime} />
+            <div className="row">
+                <Buttons handleGameLength={handleGameLength} />
+                <Timer isGameStarted={isGameStarted} isGameFinished={isGameFinished} seconds={seconds} setSeconds={setSeconds} minutes={minutes} setMinutes={setMinutes } secondsOutput={secondsOutput} setsecondsOutput={setsecondsOutput } minutesOutput={minutesOutput}  setMinutesOutput={setMinutesOutput} inTime={inTime} setInTime={setInTime} />
+            </div>
 
         </div>
     )
