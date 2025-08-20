@@ -1,15 +1,15 @@
-const Header = ( {  } ) => {
+
+
+import Timer from "../components/Timer";
+import Buttons from "./Buttons";
+const Header = ( {  handleGameLength, isGameStarted,isGameFinished,seconds,setSeconds,minutes,setMinutes,secondsOutput,setsecondsOutput,minutesOutput,setMinutesOutput,inTime,setInTime} ) => {
     return (
         <div className="header-container">
             <h1>typing-app</h1>
 
-            <div className="lengths-container">
-                <button>10</button>
-                <button>25</button>
-                <button>50</button>
-                <button>100</button>
-                <input type="text" onChange={} value={} placeholder="Choose Custom Word Length..."/>
-            </div>
+            
+            <Buttons handleGameLength={handleGameLength} />
+            <Timer isGameStarted={isGameStarted} isGameFinished={isGameFinished} seconds={seconds} setSeconds={setSeconds} minutes={minutes} setMinutes={setMinutes } secondsOutput={secondsOutput} setsecondsOutput={setsecondsOutput } minutesOutput={minutesOutput}  setMinutesOutput={setMinutesOutput} inTime={inTime} setInTime={setInTime} />
 
         </div>
     )

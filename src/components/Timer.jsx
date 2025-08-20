@@ -37,9 +37,7 @@ const Timer = ( { seconds ,setSeconds ,minutes ,setMinutes, secondsOutput, setse
 
     
 
-        
-
-      }, 1000)
+        }, 1000)
       }
     
       return () => {clearInterval(timer)}

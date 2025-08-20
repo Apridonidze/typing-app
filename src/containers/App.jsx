@@ -1,6 +1,5 @@
 import Game from "./Game";
 import Final from "./Final";
-import Timer from "../components/Timer";
 import Header from "../components/Header";
 
 import { useEffect, useReducer, useRef, useState } from "react";
@@ -18,6 +17,7 @@ const App = () => {
 
 
   const [words,setWords] = useState([''])
+  const [gameLength, setGameLength] = useState(25);
   const [isGameFinished, setIsGameFinished] = useState(false)
   const [isGameStarted, setIsGameStarted] = useState(false)
   const [inserted,setInserted] = useState([])
@@ -43,23 +43,24 @@ const App = () => {
 
     },[correctCount,incorrectCount,isGameStarted, isGameFinished])
  
+    
+const handleGameLength = (e) => {
 
-
-
-
-  useEffect(() => {
-
+  
     const API_URL = 'http://localhost:8080/words'
 
-    const fetchWords = () => {
 
-      axios
+      if(e){
+        const value = e 
+        setGameLength(value)
+
+         axios
       .get(API_URL)
       .then((resp) => {
 
         const data = resp.data
         const shuffledArray = [...data].sort(() => Math.random() - 0.5);
-        const slicedArray = shuffledArray.slice(0, 10)
+        const slicedArray = shuffledArray.slice(0, value || 25)
 
 
         setWords(slicedArray)
@@ -69,22 +70,28 @@ const App = () => {
         console.log(err)
       })
 
+
+    }
     }
 
-    return () => {fetchWords()}
+    useEffect(() => {
 
-  },[])
+      handleGameLength
+
+    },[gameLength])
+
+
+
 
 
   return(
     <div className="app-container">
-      App.jsx
-      <Header />
+
+      <Header handleGameLength={handleGameLength} isGameStarted={isGameStarted} isGameFinished={isGameFinished} seconds={seconds} setSeconds={setSeconds} minutes={minutes} setMinutes={setMinutes } secondsOutput={secondsOutput} setsecondsOutput={setsecondsOutput } minutesOutput={minutesOutput}  setMinutesOutput={setMinutesOutput} inTime={inTime} setInTime={setInTime}/> 
 
 {!isGameFinished ? <Game words={words} setIsGameFinished={setIsGameFinished} setCorrectCount={setCorrectCount} setInserted={setInserted} correctCount={correctCount} inserted={inserted} setIncorrectCount={setIncorrectCount} incorrectCount={incorrectCount} setIsGameStarted={setIsGameStarted} /> 
  : <Final correctCount={correctCount} incorrectCount={incorrectCount} inTime={inTime} minutesOutput={minutesOutput} secondsOutput={secondsOutput}/>}
     
-    <Timer isGameStarted={isGameStarted} isGameFinished={isGameFinished} seconds={seconds} setSeconds={setSeconds} minutes={minutes} setMinutes={setMinutes } secondsOutput={secondsOutput} setsecondsOutput={setsecondsOutput } minutesOutput={minutesOutput}  setMinutesOutput={setMinutesOutput} inTime={inTime} setInTime={setInTime} />
     </div>
     
   );
