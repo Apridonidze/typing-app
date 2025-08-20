@@ -1,23 +1,13 @@
+import Redo from "./Redo"
+import InputLetters from "./InputLetters"
+
 const Input = ( { input, letterRef, handleRedo }  ) => {
     return(
         <div className="input-container">
             
-            <div className="input">
+            <InputLetters input={input} letterRef={letterRef} />
+            <Redo handleRedo={handleRedo} input={input}/>
            
-                {input.map((letter,letterId) => (
-                
-                    <span className=" text-primary" key={letterId} ref={e => (letterRef.current[letterId] = e)}>{letter}</span>
-                
-                ))}
-           
-            </div>
-
-           <div className="input-fields">
-           
-               <input type="text" value={input.join('')} readOnly/>
-               <button onClick={handleRedo}>Redo</button>
-           
-           </div>
         </div>
     )
 }

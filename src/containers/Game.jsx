@@ -2,7 +2,7 @@ import { useLayoutEffect, useEffect, useRef, useState } from "react";
 import Words from "../components/Words";
 import Input from "../components/Input";
 import Inserted from "../components/Inserted";
-const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , correctCount , inserted , setIncorrectCount, incorrectCount, setIsGameStarted, isGameStarted} ) => {
+const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , correctCount , inserted , setIncorrectCount, incorrectCount, setIsGameStarted, isGameStarted } ) => {
 
 
     const wordRef = useRef([])
@@ -15,8 +15,10 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , correc
     const [targetLetter, setTargetLetter] = useState(0) 
 
 
+    const gameWindow = document.getElementsByClassName('game-container')
 
 
+    //add focus || blur function on window and prevent user from typing when he isnot focused on it
 
     useEffect(() => {
 
@@ -32,39 +34,22 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , correc
 
             if(targetWord){
 
-                
                 const lastIndex = input.length - 1
 
                 const inputLastLetter = input[lastIndex]
                 const targetLastLetter = targetWord[lastIndex]
-
-
                
                 if(!inputLastLetter || !targetLastLetter ){
                     return
                 }
 
-
-                
-
                 if(inputLastLetter  === targetWord[lastIndex]){
-                
-
-                  letterRef.current[lastIndex].classList.add('text-success')    
-                 
+                  letterRef.current[lastIndex].classList.add('text-success')
               
-                    
                 }else {
                     letterRef.current[lastIndex].classList.add('text-danger')
 
-
-                    
-                    
                 }
-                
-
-
-
                 
                 setTargetLetter(targetLetter => targetLetter = inputLastLetter)
 
@@ -80,9 +65,6 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , correc
     
 
     useEffect(() => {
-
-
-
 
         const handleInput = (e) => {
              setIsGameStarted(isGameStarted =>  isGameStarted =  true)
@@ -142,8 +124,6 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , correc
                 if(input.length < 1){
                     setInput([])
 
-
-
                     if(inserted.length > 0){
 
                         setInserted(inserted.slice(0, -1))
@@ -158,11 +138,8 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , correc
                         setInput([])
                        }
 
-
                 } 
                 
-
-
                 if(target < 1){
                     setTarget(0)
                     return
@@ -188,11 +165,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , correc
                     setInput(input.slice(0, wordRef.current[target].textContent.length))
                     return
                 }
-
-
             }
-
-
             
         }
 
@@ -210,9 +183,6 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , correc
         if(input.length > 0){
 
                 const lastIndex = input.length - 1
-                    
-                        //letterRef.current[i].textContent
-                    
 
                 setInput([])
                 setTarget(target => target + 1)
@@ -233,13 +203,11 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , correc
 
     return(
         <div className="game-container">
+
             Game.jsx
             <Words words={words} wordRef={wordRef} />
             <Inserted  inserted={inserted}/>
             <Input input={input} letterRef={letterRef} targetLetter={targetLetter}  handleRedo={handleRedo} />  
-         
-
-
 
         </div>
     );

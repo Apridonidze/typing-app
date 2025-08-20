@@ -7,8 +7,6 @@ const Timer = ( { seconds ,setSeconds ,minutes ,setMinutes, secondsOutput, setse
     
      useEffect(() => {
 
-
-
       let timer
 
       if(isGameStarted && !isGameFinished){

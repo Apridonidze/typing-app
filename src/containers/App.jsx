@@ -2,7 +2,7 @@ import Game from "./Game";
 import Final from "./Final";
 import Header from "../components/Header";
 
-import { useEffect, useReducer, useRef, useState } from "react";
+import { use, useEffect, useReducer, useRef, useState } from "react";
 import axios from "axios";
 
 const App = () => {
@@ -15,6 +15,7 @@ const App = () => {
   //TODO : add screen for tables and mobiles so they cant play
   
 
+  const [isFocused, setIsFocused] = useState(false)
 
   const [words,setWords] = useState([''])
   const [gameLength, setGameLength] = useState(25);
@@ -51,22 +52,20 @@ const handleGameLength = (e) => {
 
 
       if(e){
-        const value = e 
-        setGameLength(value)
+        const value = e
+        setGameLength(value || 25)
 
          axios
-      .get(API_URL)
-      .then((resp) => {
+         .get(API_URL)
+         .then((resp) => {
+          
+          const data = resp.data
+          const shuffledArray = [...data].sort(() => Math.random() - 0.5);
+          const slicedArray = shuffledArray.slice(0, value)
+          
+          setWords(slicedArray)
 
-        const data = resp.data
-        const shuffledArray = [...data].sort(() => Math.random() - 0.5);
-        const slicedArray = shuffledArray.slice(0, value || 25)
-
-
-        setWords(slicedArray)
-
-      })
-      .catch((err) => {
+      }).catch((err) => {
         console.log(err)
       })
 
@@ -79,9 +78,6 @@ const handleGameLength = (e) => {
       handleGameLength
 
     },[gameLength])
-
-
-
 
 
   return(
