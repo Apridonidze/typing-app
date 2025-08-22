@@ -1,6 +1,10 @@
-import RefreshBtn from "../components/RefreshBtn";
+import { useEffect, useState } from "react";
 
-const Final = ( {correctCount ,incorrectCount, inTime, minutesOutput ,secondsOutput} ) => {
+const Final = ( {correctCount ,incorrectCount, inTime, minutesOutput ,secondsOutput, minutes,seconds} ) => {
+
+
+
+    const totalWords = incorrectCount + correctCount
 
 
     return(
@@ -8,14 +12,12 @@ const Final = ( {correctCount ,incorrectCount, inTime, minutesOutput ,secondsOut
             Final.jsx
 
 
-            <span>Correct Word Count: {correctCount}</span>
-            <span>inCorerct Word Count :{incorrectCount}</span>
+            <span>Total Word Count : {totalWords}</span><br />
+            <span>Correct Word Count: {correctCount}</span><br />
+            <span>inCorerct Word Count :{incorrectCount}</span><br />
 
-            {inTime ? <span>You Finished in {minutesOutput}, {secondsOutput}</span> : <span>You Did Not Make It In Time</span>}
+            {inTime ? <span>You Finished in {minutesOutput} : {secondsOutput}</span> : <span>You Did Not Make It In Time</span>}<br />
 
-            {/* add WPM here  */}
-
-            <RefreshBtn />
         </div>
     );
 

@@ -10,11 +10,8 @@ import { useEffect, useRef, useState } from "react";
 
 const App = () => {
 
-  //TODO : create footer component (with refresh button and comments)
   //TODO : finish UI design 
   
-  //TODO : calculate wpm and send it to Final.jsx
-
   //TODO : add screen for tables and mobiles so they cant play
 
   //TODO : add error page & display axios error 
@@ -28,6 +25,8 @@ const App = () => {
   const [gameLength, setGameLength] = useState(25);
   const [isGameFinished, setIsGameFinished] = useState(false)
   const [isGameStarted, setIsGameStarted] = useState(false)
+  const [input,setInput] = useState([])
+  const [target,setTarget] = useState(0)
   const [inserted,setInserted] = useState([])
 
   const [correctCount,setCorrectCount] = useState(0)
@@ -73,6 +72,15 @@ const handleGameLength = (e) => {
           
           setWords(slicedArray)
           setIsWordFetched(true)
+          setInput([])
+          setInserted([])
+          
+
+
+          if(isGameFinished){
+            window.location.reload()
+          }
+
 
       }).catch((err) => {
         console.log(err) //set error in setError
@@ -94,8 +102,8 @@ const handleGameLength = (e) => {
 
       <Header handleGameLength={handleGameLength} isGameStarted={isGameStarted} isGameFinished={isGameFinished} seconds={seconds} setSeconds={setSeconds} minutes={minutes} setMinutes={setMinutes } secondsOutput={secondsOutput} setsecondsOutput={setsecondsOutput } minutesOutput={minutesOutput}  setMinutesOutput={setMinutesOutput} inTime={inTime} setInTime={setInTime}/> 
 
-{!isGameFinished ? <Main words={words} setIsGameFinished={setIsGameFinished} setCorrectCount={setCorrectCount} setInserted={setInserted} correctCount={correctCount} inserted={inserted} setIncorrectCount={setIncorrectCount} incorrectCount={incorrectCount} setIsGameStarted={setIsGameStarted} isFocused={isFocused} setIsFocused={setIsFocused} isWordsFetched={isWordsFetched} divRef={divRef} /> 
- : <Final correctCount={correctCount} incorrectCount={incorrectCount} inTime={inTime} minutesOutput={minutesOutput} secondsOutput={secondsOutput}/>}
+{!isGameFinished ? <Main words={words} setIsGameFinished={setIsGameFinished} setCorrectCount={setCorrectCount} setInserted={setInserted} correctCount={correctCount} inserted={inserted} setIncorrectCount={setIncorrectCount} incorrectCount={incorrectCount} setIsGameStarted={setIsGameStarted} isFocused={isFocused} setIsFocused={setIsFocused} isWordsFetched={isWordsFetched} divRef={divRef} input={input} setInput={setInput} setTarget={setTarget} target={target} /> 
+ : <Final correctCount={correctCount} incorrectCount={incorrectCount} inTime={inTime} minutesOutput={minutesOutput} secondsOutput={secondsOutput} minutes={minutes} seconds={seconds}/>}
  
  <Footer />
     </div>

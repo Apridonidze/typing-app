@@ -8,13 +8,10 @@ import Input from "../components/Input";
 import Inserted from "../components/Inserted";
 import Focused from "../components/Focused";
 
-const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , inserted , setIncorrectCount, setIsGameStarted, isGameStarted, isWordsFetched, isFocused  } ) => {
+const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , inserted , setIncorrectCount, setIsGameStarted, isGameStarted, isWordsFetched, isFocused , input, setInput, setTarget, target} ) => {
 
     const wordRef = useRef([])
     const letterRef = useRef([])
-
-    const [input,setInput] = useState([])
-    const [target,setTarget] = useState(0)
 
     const [targetWord, setTargetWord] = useState('')
     const [targetLetter, setTargetLetter] = useState(0) 
