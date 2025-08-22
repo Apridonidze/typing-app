@@ -1,16 +1,21 @@
+import RefreshBtn from "../components/RefreshBtn";
+
 const Final = ( {correctCount ,incorrectCount, inTime, minutesOutput ,secondsOutput} ) => {
 
 
     return(
         <div className="final-container">
             Final.jsx
-            <h1>Correct Word Count: {correctCount}</h1>
-            <h1>inCorerct Word Count :{incorrectCount}</h1>
-
-            {inTime ? <h1>You Finished in {minutesOutput}, {secondsOutput}</h1> : <h1>You Did Not Make It In Time</h1>}
 
 
-            {/* add start another game button here (refreshes tab) */}
+            <span>Correct Word Count: {correctCount}</span>
+            <span>inCorerct Word Count :{incorrectCount}</span>
+
+            {inTime ? <span>You Finished in {minutesOutput}, {secondsOutput}</span> : <span>You Did Not Make It In Time</span>}
+
+            {/* add WPM here  */}
+
+            <RefreshBtn />
         </div>
     );
 
