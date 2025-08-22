@@ -2,7 +2,9 @@ import axios from "axios";
 
 import Main from "./Main";
 import Final from "./Final";
-import Header from "../components/Header";
+import Header from "./Header";
+import Footer from "./Footer";
+
 import { useEffect, useRef, useState } from "react";
 
 
@@ -94,7 +96,8 @@ const handleGameLength = (e) => {
 
 {!isGameFinished ? <Main words={words} setIsGameFinished={setIsGameFinished} setCorrectCount={setCorrectCount} setInserted={setInserted} correctCount={correctCount} inserted={inserted} setIncorrectCount={setIncorrectCount} incorrectCount={incorrectCount} setIsGameStarted={setIsGameStarted} isFocused={isFocused} setIsFocused={setIsFocused} isWordsFetched={isWordsFetched} divRef={divRef} /> 
  : <Final correctCount={correctCount} incorrectCount={incorrectCount} inTime={inTime} minutesOutput={minutesOutput} secondsOutput={secondsOutput}/>}
-
+ 
+ <Footer />
     </div>
     
   );

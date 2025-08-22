@@ -1,9 +1,9 @@
 import Timer from "../components/Timer";
-import Buttons from "./Buttons";
+import Buttons from "../components/Buttons";
 
 const Header = ( {  handleGameLength, isGameStarted,isGameFinished,seconds,setSeconds,minutes,setMinutes,secondsOutput,setsecondsOutput,minutesOutput,setMinutesOutput,inTime,setInTime} ) => {
     return (
-        <div className="header-container">
+        <div className="header-container" >
             <h1>typing-app</h1>
 
             <div className="row">

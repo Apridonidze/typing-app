@@ -1,6 +1,6 @@
 const RefreshBtn = () => {
     return (
-        <button onClick={() => window.location.reload()}>Start Again...</button>
+        <button onClick={() => window.location.reload() } tabIndex='0'>Start Again...</button>
     )
 }
 

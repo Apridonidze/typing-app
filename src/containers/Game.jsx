@@ -210,6 +210,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
             <Words words={words} wordRef={wordRef} />
             <Inserted  inserted={inserted}/>
             <Input input={input} letterRef={letterRef} targetLetter={targetLetter}  handleRedo={handleRedo} />  
+
         </div>
     );
 };
