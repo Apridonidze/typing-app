@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 
 const Final = ( {correctCount ,incorrectCount, inTime, minutesOutput ,secondsOutput, minutes,seconds} ) => {
 

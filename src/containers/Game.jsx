@@ -88,10 +88,30 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
 
 
 
+                if(input.length < correctWord.length){
+
+                    const diff = correctWord.length - input.length
+                    const paddedInput = input.join('') + "_".repeat(diff)
+
+                    setInserted(inserted => [...inserted , {text : paddedInput ,className : letterRef.current[lastIndex].classList }])
+                    setTarget(target => target + 1) 
+                    setInput([])
+
+
+
+                }else {
+
                 setInput([])
                 setTarget(target => target + 1)
                 setInserted(inserted => [...inserted , {text : input ,className : letterRef.current[lastIndex].classList }])
 
+
+                }
+
+
+                
+
+               
 
                 if(target + 1 == words.length){
                     setIsGameFinished(true)
@@ -99,10 +119,11 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                     setInput([])
                     setInserted(inserted)
 
-                    console.log(inserted)
 
                     return
                 }
+
+
 
                 return
                 }
