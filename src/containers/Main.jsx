@@ -7,7 +7,7 @@ const Main = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
     
 
     return(
-        <div className="main-container" ref={divRef} tabIndex={0} onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)} tabIndex='-1'>
+        <div className="main-container" ref={divRef} tabIndex="-1" onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)}>
 
             Game.jsx
             
