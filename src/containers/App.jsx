@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import Game from "./Game";
+import Main from "./Main";
 import Final from "./Final";
 import Header from "../components/Header";
 import { useEffect, useRef, useState } from "react";
@@ -20,6 +20,7 @@ const App = () => {
   const divRef = useRef(null)
 
   const [isFocused, setIsFocused] = useState(false)
+  const [isWordsFetched, setIsWordFetched] = useState(false)
 
   const [words,setWords] = useState([''])
   const [gameLength, setGameLength] = useState(25);
@@ -69,6 +70,7 @@ const handleGameLength = (e) => {
           const slicedArray = shuffledArray.slice(0, value)
           
           setWords(slicedArray)
+          setIsWordFetched(true)
 
       }).catch((err) => {
         console.log(err) //set error in setError
@@ -90,7 +92,7 @@ const handleGameLength = (e) => {
 
       <Header handleGameLength={handleGameLength} isGameStarted={isGameStarted} isGameFinished={isGameFinished} seconds={seconds} setSeconds={setSeconds} minutes={minutes} setMinutes={setMinutes } secondsOutput={secondsOutput} setsecondsOutput={setsecondsOutput } minutesOutput={minutesOutput}  setMinutesOutput={setMinutesOutput} inTime={inTime} setInTime={setInTime}/> 
 
-{!isGameFinished ? <Game words={words} setIsGameFinished={setIsGameFinished} setCorrectCount={setCorrectCount} setInserted={setInserted} correctCount={correctCount} inserted={inserted} setIncorrectCount={setIncorrectCount} incorrectCount={incorrectCount} setIsGameStarted={setIsGameStarted} isFocused={isFocused} setIsFocused={setIsFocused} divRef={divRef} /> 
+{!isGameFinished ? <Main words={words} setIsGameFinished={setIsGameFinished} setCorrectCount={setCorrectCount} setInserted={setInserted} correctCount={correctCount} inserted={inserted} setIncorrectCount={setIncorrectCount} incorrectCount={incorrectCount} setIsGameStarted={setIsGameStarted} isFocused={isFocused} setIsFocused={setIsFocused} isWordsFetched={isWordsFetched} divRef={divRef} /> 
  : <Final correctCount={correctCount} incorrectCount={incorrectCount} inTime={inTime} minutesOutput={minutesOutput} secondsOutput={secondsOutput}/>}
 
     </div>
