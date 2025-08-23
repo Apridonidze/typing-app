@@ -1,8 +1,6 @@
 
 import { useRef,useEffect,useState } from "react";
 
-
-
 import Words from "../components/Words";
 import Input from "../components/Input";
 import Inserted from "../components/Inserted";
@@ -16,10 +14,6 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
     const [targetWord, setTargetWord] = useState('')
     const [targetLetter, setTargetLetter] = useState(0) 
 
-
-
-
-    //add focus || blur function on window and prevent user from typing when he isnot focused on it
 
     useEffect(() => {
 
@@ -91,26 +85,24 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                 if(input.length < correctWord.length){
 
                     const diff = correctWord.length - input.length
-                    const paddedInput = input.join('') + "_".repeat(diff)
+                    const spaces = ['_ '.repeat(diff)]
+                    const paddedArr = input.join(' ') + spaces
+                    const clearedPaddedArr = paddedArr.split(' ').join(' ')
+                    setInput([clearedPaddedArr ])
 
-                    setInserted(inserted => [...inserted , {text : paddedInput ,className : letterRef.current[lastIndex].classList }])
-                    setTarget(target => target + 1) 
+                    
+
+                    setTarget(target => target + 1)
+                    setInserted(inserted => [...inserted , {text : clearedPaddedArr  ,className : letterRef.current[lastIndex].classList }]) //fix this line
                     setInput([])
-
 
 
                 }else {
 
-                setInput([])
-                setTarget(target => target + 1)
-                setInserted(inserted => [...inserted , {text : input ,className : letterRef.current[lastIndex].classList }])
-
-
+                    setInput([])
+                    setTarget(target => target + 1)
+                    setInserted(inserted => [...inserted , {text : input ,className : letterRef.current[lastIndex].classList }])
                 }
-
-
-                
-
                
 
                 if(target + 1 == words.length){
@@ -122,8 +114,6 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
 
                     return
                 }
-
-
 
                 return
                 }
@@ -146,7 +136,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
 
                         setInserted(inserted.slice(0, -1))
                         setTarget(target => target = inserted.length -1 )
-                        setInput(inserted[inserted.length - 1].text) 
+                        setInput(inserted[inserted.length - 1].text)  //fix this line
                         
                        if(inserted.length > 0){
 
@@ -155,6 +145,8 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                        }else {
                         setInput([])
                        }
+
+                    
 
                 } 
                 
