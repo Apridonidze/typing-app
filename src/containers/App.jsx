@@ -55,18 +55,13 @@ const App = () => {
 
       setUserDevice(userDevice => userDevice = deviceType)
 
-
-      if(userDevice !== "Desktop"){
-        setSupportedDevice(true)
-      }else {
-        setSupportedDevice(false)
-      }
+      {userDevice !== 'Desktop' ? setSupportedDevice(true) : setSupportedDevice(false)}
     
 
   },[deviceType])
 
 
-    useEffect(() => {
+  useEffect(() => {
 
       setCorrectCount(correctCount)
       setIncorrectCount(incorrectCount)
@@ -75,10 +70,11 @@ const App = () => {
       setIsFocused(isFocused)
 
 
-    },[correctCount,incorrectCount,isGameStarted, isGameFinished, isFocused])
+  },[correctCount,incorrectCount,isGameStarted, isGameFinished, isFocused])
  
     
-const handleGameLength = (e) => {
+
+  const handleGameLength = (e) => {
 
   
     const API_URL = 'http://localhost:8080/words'
@@ -112,25 +108,37 @@ const handleGameLength = (e) => {
 
 
     }
-    }
+  }
 
-    useEffect(() => {
+  useEffect(() => {
 
       handleGameLength
 
-    },[gameLength])
+  },[gameLength])
 
 
   return(
     <div className="app-container">
-      {supportedDevice ? <>
-      <Header handleGameLength={handleGameLength} isGameStarted={isGameStarted} isGameFinished={isGameFinished} seconds={seconds} setSeconds={setSeconds} minutes={minutes} setMinutes={setMinutes } secondsOutput={secondsOutput} setsecondsOutput={setsecondsOutput } minutesOutput={minutesOutput}  setMinutesOutput={setMinutesOutput} inTime={inTime} setInTime={setInTime}/> 
       
-
-{!isGameFinished ? <Main words={words} setIsGameFinished={setIsGameFinished} setCorrectCount={setCorrectCount} setInserted={setInserted} correctCount={correctCount} inserted={inserted} setIncorrectCount={setIncorrectCount} incorrectCount={incorrectCount} setIsGameStarted={setIsGameStarted} isFocused={isFocused} setIsFocused={setIsFocused} isWordsFetched={isWordsFetched} divRef={divRef} input={input} setInput={setInput} setTarget={setTarget} target={target} /> 
- : <Final correctCount={correctCount} incorrectCount={incorrectCount} inTime={inTime} minutesOutput={minutesOutput} secondsOutput={secondsOutput} minutes={minutes} seconds={seconds}/> }
-
-      <Footer /></> : <Unsupported />}
+      {supportedDevice ? 
+        <>
+          <Header handleGameLength={handleGameLength} isGameStarted={isGameStarted} isGameFinished={isGameFinished} seconds={seconds} setSeconds={setSeconds} minutes={minutes} setMinutes={setMinutes } secondsOutput={secondsOutput} setsecondsOutput={setsecondsOutput } minutesOutput={minutesOutput}  setMinutesOutput={setMinutesOutput} inTime={inTime} setInTime={setInTime}/> 
+      
+          {!isGameFinished ? 
+      
+            <Main words={words} setIsGameFinished={setIsGameFinished} setCorrectCount={setCorrectCount} setInserted={setInserted} correctCount={correctCount} inserted={inserted} setIncorrectCount={setIncorrectCount} incorrectCount={incorrectCount} setIsGameStarted={setIsGameStarted} isFocused={isFocused} setIsFocused={setIsFocused} isWordsFetched={isWordsFetched} divRef={divRef} input={input} setInput={setInput} setTarget={setTarget} target={target} /> 
+      
+          :
+      
+          <Final correctCount={correctCount} incorrectCount={incorrectCount} inTime={inTime} minutesOutput={minutesOutput} secondsOutput={secondsOutput} minutes={minutes} seconds={seconds}/> 
+      
+      }
+      
+        <Footer />
+      
+      </> 
+      
+      : <Unsupported />}
     </div>
     
   );

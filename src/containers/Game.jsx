@@ -1,11 +1,8 @@
 
 import { useRef,useEffect,useState } from "react";
 
-import Words from "../components/Words";
-import Input from "../components/Input";
-import Inserted from "../components/Inserted";
 import Focused from "../components/Focused";
-
+import Wrapper from "./Wrapper";
 const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , inserted , setIncorrectCount, setIsGameStarted, isGameStarted, isWordsFetched, isFocused , input, setInput, setTarget, target} ) => {
 
     const wordRef = useRef([])
@@ -218,15 +215,14 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
 }
 
 
-/* create if focused logic. if component is not focused append Focused.jsx on top of game-container */
     return (
         <div className="game-container">
+            
+            
+            <Focused isFocused={isFocused}/>
 
-{!isFocused ? <Focused /> : <></>}
 
-            <Words words={words} wordRef={wordRef} />
-            <Inserted  inserted={inserted}/>
-            <Input input={input} letterRef={letterRef} targetLetter={targetLetter}  handleRedo={handleRedo} />  
+            <Wrapper words={words} wordRef={wordRef} inserted={inserted} input={input} letterRef={letterRef} targetLetter={targetLetter} handleRedo={handleRedo} isFocused={isFocused}/>
 
         </div>
     );
