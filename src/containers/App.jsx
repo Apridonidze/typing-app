@@ -16,6 +16,8 @@ const App = () => {
 
   //TODO : add error page & display axios error 
 
+  
+
   const divRef = useRef(null)
 
   const [isFocused, setIsFocused] = useState(false)
@@ -38,6 +40,31 @@ const App = () => {
   const [secondsOutput, setsecondsOutput] = useState('00')
   const [minutesOutput, setMinutesOutput] = useState('00')
   const [inTime,setInTime] = useState(true)
+
+
+
+  const [userDevice, setUserDevice] = useState('')
+  const [supportedDevice,setSupportedDevice] = useState(null)
+
+  const userAgent = navigator.userAgent.toLowerCase()
+  const isMobile = /iphone|ipad|ipod|android|windows phone/g.test(userAgent);
+  const isTablet = /(ipad|tablet|playbook|silk)|(android(?!.*mobile))/g.test(userAgent);
+  const deviceType = isMobile ? 'Mobile' : (isTablet ? 'Tablet' : 'Desktop');
+
+
+  useEffect(() => {
+
+      setUserDevice(userDevice => userDevice = deviceType)
+
+
+      if(userDevice !== "Desktop"){
+        setSupportedDevice(true)
+      }else {
+        setSupportedDevice(false)
+      }
+    
+
+  },[deviceType])
 
 
     useEffect(() => {
@@ -99,13 +126,14 @@ const handleGameLength = (e) => {
 
   return(
     <div className="app-container">
-
+      {supportedDevice ? <>
       <Header handleGameLength={handleGameLength} isGameStarted={isGameStarted} isGameFinished={isGameFinished} seconds={seconds} setSeconds={setSeconds} minutes={minutes} setMinutes={setMinutes } secondsOutput={secondsOutput} setsecondsOutput={setsecondsOutput } minutesOutput={minutesOutput}  setMinutesOutput={setMinutesOutput} inTime={inTime} setInTime={setInTime}/> 
+      
 
 {!isGameFinished ? <Main words={words} setIsGameFinished={setIsGameFinished} setCorrectCount={setCorrectCount} setInserted={setInserted} correctCount={correctCount} inserted={inserted} setIncorrectCount={setIncorrectCount} incorrectCount={incorrectCount} setIsGameStarted={setIsGameStarted} isFocused={isFocused} setIsFocused={setIsFocused} isWordsFetched={isWordsFetched} divRef={divRef} input={input} setInput={setInput} setTarget={setTarget} target={target} /> 
- : <Final correctCount={correctCount} incorrectCount={incorrectCount} inTime={inTime} minutesOutput={minutesOutput} secondsOutput={secondsOutput} minutes={minutes} seconds={seconds}/>}
- 
- <Footer />
+ : <Final correctCount={correctCount} incorrectCount={incorrectCount} inTime={inTime} minutesOutput={minutesOutput} secondsOutput={secondsOutput} minutes={minutes} seconds={seconds}/> }
+
+      <Footer /></> : <h1>unsupported Device....</h1>}
     </div>
     
   );
