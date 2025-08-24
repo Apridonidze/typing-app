@@ -4,6 +4,8 @@ import Main from "./Main";
 import Final from "./Final";
 import Header from "./Header";
 import Footer from "./Footer";
+import Unsupported from "../components/Unsupported";
+
 
 import { useEffect, useRef, useState } from "react";
 
@@ -133,7 +135,7 @@ const handleGameLength = (e) => {
 {!isGameFinished ? <Main words={words} setIsGameFinished={setIsGameFinished} setCorrectCount={setCorrectCount} setInserted={setInserted} correctCount={correctCount} inserted={inserted} setIncorrectCount={setIncorrectCount} incorrectCount={incorrectCount} setIsGameStarted={setIsGameStarted} isFocused={isFocused} setIsFocused={setIsFocused} isWordsFetched={isWordsFetched} divRef={divRef} input={input} setInput={setInput} setTarget={setTarget} target={target} /> 
  : <Final correctCount={correctCount} incorrectCount={incorrectCount} inTime={inTime} minutesOutput={minutesOutput} secondsOutput={secondsOutput} minutes={minutes} seconds={seconds}/> }
 
-      <Footer /></> : <h1>unsupported Device....</h1>}
+      <Footer /></> : <Unsupported />}
     </div>
     
   );
