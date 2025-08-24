@@ -85,15 +85,12 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                 if(input.length < correctWord.length){
 
                     const diff = correctWord.length - input.length
-                    const spaces = ['_ '.repeat(diff)]
-                    const paddedArr = input.join(' ') + spaces
-                    const clearedPaddedArr = paddedArr.split(' ').join(' ')
-                    setInput([clearedPaddedArr ])
-
+                    const unserscores = ('_').repeat(diff)
+                    const mergedPadArray = [...input, ...unserscores]
                     
 
                     setTarget(target => target + 1)
-                    setInserted(inserted => [...inserted , {text : clearedPaddedArr  ,className : letterRef.current[lastIndex].classList }]) //fix this line
+                    setInserted(inserted => [...inserted , {text : mergedPadArray ,className : letterRef.current[lastIndex].classList }])
                     setInput([])
 
 
@@ -136,11 +133,21 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
 
                         setInserted(inserted.slice(0, -1))
                         setTarget(target => target = inserted.length -1 )
-                        setInput(inserted[inserted.length - 1].text)  //fix this line
+                        setInput(inserted[inserted.length - 1].text)
                         
                        if(inserted.length > 0){
 
-                        setInput(inserted[inserted.length - 1].text)
+                        const lastInserted = inserted[inserted.length - 1].text
+
+                        setInput( () => {
+
+                            let lastInsertedCopy = [...lastInserted]
+                            while(lastInsertedCopy[lastInsertedCopy.length - 1] === '_'){
+                                lastInsertedCopy.pop()
+                            }
+                            return lastInsertedCopy
+                        }
+                        )
 
                        }else {
                         setInput([])
