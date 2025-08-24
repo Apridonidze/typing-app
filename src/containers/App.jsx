@@ -13,10 +13,7 @@ import { useEffect, useRef, useState } from "react";
 const App = () => {
 
   //TODO : finish UI design 
-  
-  //TODO : add screen for tables and mobiles so they cant play
 
-  //TODO : add error page & display axios error 
 
   
 
@@ -103,8 +100,6 @@ const handleGameLength = (e) => {
           setIsWordFetched(true)
           setInput([])
           setInserted([])
-          
-
 
           if(isGameFinished){
             window.location.reload()
@@ -112,7 +107,7 @@ const handleGameLength = (e) => {
 
 
       }).catch((err) => {
-        console.log(err) //set error in setError
+        console.log("%cError :", 'background-color : #ff0000; color: white ; padding: 5px; border-radius: 20px; font-weigth: bold' , err)
       })
 
 
