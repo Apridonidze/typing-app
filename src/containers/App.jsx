@@ -102,10 +102,17 @@ const App = () => {
           setIsWordFetched(true)
           setInput([])
           setInserted([])
+          
 
-          if(isGameFinished){
-            window.location.reload()
-          }
+          {isGameFinished ? window.location.reload() : 
+            setIsGameFinished(false) 
+            setIsGameStarted(false)
+            setSeconds(0)
+            setMinutes(0)
+            setsecondsOutput('00')
+            setMinutesOutput('00')
+        }
+          
 
 
       }).catch((err) => {
