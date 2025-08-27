@@ -13,6 +13,7 @@ import { useEffect, useRef, useState } from "react";
 const App = () => {
 
   //TODO : add dark/light mode button to Header
+  //TODO : add custom text size for preferences
 
   //TODO : add contact in Footer
   //TODO : add text in Unsupported Component
@@ -24,11 +25,13 @@ const App = () => {
   //TODO : make website SEO optimazed
   //TODO : push to github
   
+  const [darkMode,setDarkMode] = useState(false)
 
   const divRef = useRef(null)
 
   const [isFocused, setIsFocused] = useState(false)
   const [isWordsFetched, setIsWordFetched] = useState(false)
+
 
   const [words,setWords] = useState([''])
   const [gameLength, setGameLength] = useState(25);
@@ -47,7 +50,6 @@ const App = () => {
   const [secondsOutput, setsecondsOutput] = useState('00')
   const [minutesOutput, setMinutesOutput] = useState('00')
   const [inTime,setInTime] = useState(true)
-
 
 
   const [userDevice, setUserDevice] = useState('')
@@ -131,9 +133,15 @@ const App = () => {
 
   },[gameLength])
 
+  const darkTheme = {backgroundColor: 'black', color : 'white'}
+  const lightTheme = {backgroundColor : 'white', color: 'black'}
+  const devTheme = {backgroundColor : '#1b2028', color : '#23a9d5'}
+  const matrixTheme = {backgroundColor : '#000000 ', color : '#15ff00'}
+  const vsCodeTheme = {backgroundColor: '#1e1e1e', color : 'white'}
+  const creamsicle = {backgroundColor: '#ff9869' , color : 'white'}
 
   return(
-    <div className="app-container">
+    <div className="app-container" style={matrixTheme}>
       
       {supportedDevice ? 
         <>
