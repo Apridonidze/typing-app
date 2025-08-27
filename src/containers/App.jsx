@@ -12,14 +12,16 @@ import { useEffect, useRef, useState } from "react";
 
 const App = () => {
 
-  //TODO : fix timer on changing gameLength
-  //TODO : finish UI design 
   //TODO : add dark/light mode button to Header
+
   //TODO : add contact in Footer
-  //TODO : change start again btn in footer with icon and add comments in Footer 
   //TODO : add text in Unsupported Component
-  //TODO : make website SEO optimazed
+  //TODO : change start again btn in footer with icon and add comments in Footer 
+  
+  //TODO : finish UI design 
+  
   //TODO : cleanup code & documentate it
+  //TODO : make website SEO optimazed
   //TODO : push to github
   
 

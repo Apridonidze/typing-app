@@ -9,7 +9,7 @@ const Footer = () => {
 
             <span>Press Tab + Enter To Refresh</span>
 
-
+            
             
         
         </div>
