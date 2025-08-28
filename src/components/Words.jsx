@@ -1,8 +1,8 @@
 const Words = ( { words,wordRef } ) => {
     return (
-        <div className="words-container">
+        <div className="words-container text-break">
             {words.map((word,wordId) => (
-                <span className="mx-1 text-break" key={wordId} ref={e => (wordRef.current[wordId] = e)} >{word}</span>
+                <span className="pe-2" key={wordId} ref={e => (wordRef.current[wordId] = e)} >{word}</span>
             ))}
         </div>
     )

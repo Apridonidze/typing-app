@@ -12,7 +12,8 @@ import { useEffect, useRef, useState } from "react";
 
 const App = () => {
 
-  //TODO : add dark/light mode button to Header
+  //TODO : change underscores in isnerted with empty letters 
+
   //TODO : add custom text size for preferences
 
   //TODO : add contact in Footer
@@ -141,7 +142,7 @@ const App = () => {
   const creamsicle = {backgroundColor: '#ff9869' , color : 'white'}
 
   return(
-    <div className="app-container" style={matrixTheme}>
+    <div className="app-container container-fluid min-vh-100 d-flex flex-column justify-content-between gap-5" style={devTheme}>
       
       {supportedDevice ? 
         <>

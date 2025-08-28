@@ -216,11 +216,10 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
 
 
     return (
-        <div className="game-container">
+        <div className="game-container container border border-2 border-secondary rounded-3 p-5">
             
             
             <Focused isFocused={isFocused}/>
-
 
             <Wrapper words={words} wordRef={wordRef} inserted={inserted} input={input} letterRef={letterRef} targetLetter={targetLetter} handleRedo={handleRedo} isFocused={isFocused}/>
 
