@@ -12,7 +12,10 @@ import { useEffect, useRef, useState } from "react";
 
 const App = () => {
 
-  //TODO : change underscores in isnerted with empty letters 
+  //TODO : fix spacing between inputs (use .join() for it  ||  css styling (.join() is better) )
+  //TODO : fix max letters length while typing word in Game.jsx
+  //TODO : add underline for selected game length in buttons (use useRef)
+  //TODO : add underline for last letter to track where user is 
 
   //TODO : add custom text size for preferences
 
@@ -26,8 +29,6 @@ const App = () => {
   //TODO : make website SEO optimazed
   //TODO : push to github
   
-  const [darkMode,setDarkMode] = useState(false)
-
   const divRef = useRef(null)
 
   const [isFocused, setIsFocused] = useState(false)
