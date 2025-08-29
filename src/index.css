@@ -16,5 +16,9 @@
     position: relative;
     top: -70px;
     background-color: white;
+    opacity: 0.5;
     width: fit-content;
+}
+.text-success {
+    padding-right: 5px;
 }

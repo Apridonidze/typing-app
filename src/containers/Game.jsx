@@ -3,6 +3,9 @@ import { useRef,useEffect,useState } from "react";
 
 import Focused from "../components/Focused";
 import Wrapper from "./Wrapper";
+import Inserted from "../components/Inserted";
+
+
 const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , inserted , setIncorrectCount, setIsGameStarted, isGameStarted, isWordsFetched, isFocused , input, setInput, setTarget, target} ) => {
 
     const wordRef = useRef([])
@@ -41,10 +44,8 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                 
                 setTargetLetter(targetLetter => targetLetter = inputLastLetter)
 
-                
             }
             return
-
 
         }
 
@@ -81,21 +82,31 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
 
                 if(input.length < correctWord.length){
 
-                    const diff = correctWord.length - input.length
-                    const unserscores = ('_').repeat(diff)
-                    const mergedPadArray = [...input, ...unserscores]
+                    const diff = correctWord.length - input.length;
                     
+                    const typedLetters = input.map((char, i) => ({
+                        text: char,
+                        className: letterRef.current[i]?.classList || ""
+                    }));
 
-                    setTarget(target => target + 1)
-                    setInserted(inserted => [...inserted , {text : mergedPadArray ,className : letterRef.current[lastIndex].classList }])
-                    setInput([])
 
+                    const leftLetters = Array.from({ length: diff }, (_, i) => ({
+                    text: correctWord[input.length + i],
+                    className: "leftover"
+                }));
+
+                const mergedInput = [...typedLetters, ...leftLetters];
+                
+                setTarget(target => target + 1);
+                setInserted(inserted => [...inserted, ...mergedInput]);
+                setInput([]);
 
                 }else {
 
                     setInput([])
                     setTarget(target => target + 1)
                     setInserted(inserted => [...inserted , {text : input ,className : letterRef.current[lastIndex].classList }])
+                    console.log(Inserted)
                 }
                
 
@@ -115,8 +126,6 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
 
             }else if (e.key === 'Backspace' ){
 
-
-                
 
                 if (input.length > 0){
                     setInput(input.slice(0 , -1))
@@ -148,9 +157,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
 
                        }else {
                         setInput([])
-                       }
-
-                    
+                       } 
 
                 } 
                 
@@ -158,12 +165,8 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                     setTarget(0)
                     return
                 }
-                
-
                     return
                 }
-
-                
 
             }else if (e.key.length > 1){
                 return
@@ -179,6 +182,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                     setInput(input.slice(0, wordRef.current[target].textContent.length))
                     return
                 }
+
             }
             
         }
@@ -213,7 +217,6 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
             }
 
 }
-
 
     return (
         <div className="game-container container border border-2 border-secondary rounded-3 p-5">

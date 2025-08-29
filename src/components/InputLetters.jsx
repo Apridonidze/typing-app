@@ -5,7 +5,7 @@ const InputLetters = ( { input , letterRef } ) => {
            
                 {input.map((letter,letterId) => (
                 
-                    <span className=" text-primary" key={letterId} ref={e => (letterRef.current[letterId] = e)}>{letter}</span>
+                    <span className="text-primary" key={letterId} ref={e => (letterRef.current[letterId] = e)}>{letter}</span>
                 
                 ))}
            
