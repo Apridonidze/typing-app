@@ -15,7 +15,6 @@ const App = () => {
   //TODO : round wpm in Final.jsx
 
   //TODO : add underline for selected game length in buttons (use useRef)
-  //TODO : add underline for last letter to track where user is 
 
   //TODO : add custom text size for preferences
 
@@ -30,7 +29,7 @@ const App = () => {
   //TODO : push to github
   
   const divRef = useRef(null)
-  const btnRef = useRef([])
+  const btnRef = useRef([null])
 
   const [isFocused, setIsFocused] = useState(false)
   const [isWordsFetched, setIsWordFetched] = useState(false)
@@ -82,56 +81,27 @@ const App = () => {
       setIsGameFinished(isGameFinished)
       setIsFocused(isFocused)
 
-
       
-
 
   },[correctCount,incorrectCount,isGameStarted, isGameFinished, isFocused])
  
-
+  
+    
 
     
 
   const handleGameLength = (e) => {
-
   
     const API_URL = 'http://localhost:8080/words'
 
 
       if(e){
         const value = e
-        setGameLength(value || 25)
-
-         axios
-         .get(API_URL)
-         .then((resp) => {
-          
-          const data = resp.data
-          const shuffledArray = [...data].sort(() => Math.random() - 0.5);
-          const slicedArray = shuffledArray.slice(0, value)
-          
-          setWords(slicedArray)
-          setIsWordFetched(true)
-          setInput([])
-          setInserted([])
-          
-
-          {isGameFinished ? window.location.reload() : 
-            setIsGameFinished(false) 
-            setIsGameStarted(false)
-            setSeconds(0)
-            setMinutes(0)
-            setsecondsOutput('00')
-            setMinutesOutput('00')
-        }
-          
 
 
-      }).catch((err) => {
-        console.log("%cError :", 'background-color : #ff0000; color: white ; padding: 5px; border-radius: 20px; font-weigth: bold' , err)
-      })
-
-
+        value.classList.remove('border-bottom')
+        value.classList.add('border-bottom')
+        
     }
   }
 
