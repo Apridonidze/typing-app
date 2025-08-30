@@ -12,7 +12,6 @@ import { useEffect, useRef, useState } from "react";
 
 const App = () => {
 
-  //TODO : fix spacing between inputs (use .join() for it  ||  css styling (.join() is better) )
   //TODO : fix max letters length while typing word in Game.jsx
   //TODO : add underline for selected game length in buttons (use useRef)
   //TODO : add underline for last letter to track where user is 

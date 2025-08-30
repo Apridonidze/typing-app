@@ -179,9 +179,11 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                 setInput(input => [...input ,e.key])
 
                 if(input.length > wordRef.current[target].textContent.length - 1){
-                    setInput([input.slice(0, wordRef.current[target].textContent.length)])
+                    setInput(input.slice(0, wordRef.current[target].textContent.length))
                     return
                 }
+
+                return
 
             }
             
