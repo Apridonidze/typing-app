@@ -13,13 +13,8 @@
     font-size: 24px;
 }
 .inserted-container {
-    position: relative;
     top: -70px;
     background-color: white;
     opacity: 0.5;
     width: fit-content;
-}
-.inputs {
-    padding: 0px;
-    margin: 0px;
 }

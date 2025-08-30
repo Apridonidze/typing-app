@@ -12,7 +12,8 @@ import { useEffect, useRef, useState } from "react";
 
 const App = () => {
 
-  //TODO : fix max letters length while typing word in Game.jsx
+  //TODO : round wpm in Final.jsx
+
   //TODO : add underline for selected game length in buttons (use useRef)
   //TODO : add underline for last letter to track where user is 
 
@@ -29,6 +30,7 @@ const App = () => {
   //TODO : push to github
   
   const divRef = useRef(null)
+  const btnRef = useRef([])
 
   const [isFocused, setIsFocused] = useState(false)
   const [isWordsFetched, setIsWordFetched] = useState(false)
@@ -81,8 +83,13 @@ const App = () => {
       setIsFocused(isFocused)
 
 
+      
+
+
   },[correctCount,incorrectCount,isGameStarted, isGameFinished, isFocused])
  
+
+
     
 
   const handleGameLength = (e) => {
@@ -146,7 +153,7 @@ const App = () => {
       
       {supportedDevice ? 
         <>
-          <Header handleGameLength={handleGameLength} isGameStarted={isGameStarted} isGameFinished={isGameFinished} seconds={seconds} setSeconds={setSeconds} minutes={minutes} setMinutes={setMinutes } secondsOutput={secondsOutput} setsecondsOutput={setsecondsOutput } minutesOutput={minutesOutput}  setMinutesOutput={setMinutesOutput} inTime={inTime} setInTime={setInTime}/> 
+          <Header handleGameLength={handleGameLength} isGameStarted={isGameStarted} isGameFinished={isGameFinished} seconds={seconds} setSeconds={setSeconds} minutes={minutes} setMinutes={setMinutes } secondsOutput={secondsOutput} setsecondsOutput={setsecondsOutput } minutesOutput={minutesOutput}  setMinutesOutput={setMinutesOutput} inTime={inTime} setInTime={setInTime} btnRef={btnRef}/> 
       
           {!isGameFinished ? 
       

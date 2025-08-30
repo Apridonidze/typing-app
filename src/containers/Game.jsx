@@ -23,23 +23,34 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
              setTargetWord(targetWord => targetWord = wordRef.current[target].textContent)
              
 
+          
+
             if(targetWord){
 
                 const lastIndex = input.length - 1
-
                 const inputLastLetter = input[lastIndex]
                 const targetLastLetter = targetWord[lastIndex]
                
-                if(!inputLastLetter || !targetLastLetter ){
-                    return
-                }
+                if(!inputLastLetter || !targetLastLetter ) return;
+
+
+                   
+             if(letterRef.current){
+                 
+                if(lastIndex < 1)return
+                
+                letterRef.current[lastIndex - 1].classList.remove('border-bottom')
+                letterRef.current[lastIndex].classList.add('border-bottom')
+
+             }else return;
+
+
 
                 if(inputLastLetter  === targetWord[lastIndex]){
-                  letterRef.current[lastIndex].classList.add('text-success')
+                  letterRef.current[lastIndex - 1].classList.add('text-success')
               
                 }else {
                     letterRef.current[lastIndex].classList.add('text-danger')
-
                 }
                 
                 setTargetLetter(targetLetter => targetLetter = inputLastLetter)
@@ -49,7 +60,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
 
         }
 
-    },[input,])
+    },[input])
 
     
 
