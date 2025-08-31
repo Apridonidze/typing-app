@@ -14,9 +14,9 @@ const App = () => {
 
   //TODO : round wpm in Final.jsx
 
-  //TODO : add underline for selected game length in buttons (use useRef)
 
   //TODO : add custom text size for preferences
+  //TODO : rewrite styling variables (line 118-123) wiht bootstrap styling and create text color for buttons in header when theme changes {use objects exl: const darkTheme = {theme : 'dark', btnColor : 'text-info'}}
 
   //TODO : add contact in Footer
   //TODO : add text in Unsupported Component
@@ -31,12 +31,15 @@ const App = () => {
   const divRef = useRef(null)
   const btnRef = useRef([null])
 
+  const [targetButton, setTargetButton] = useState(null)
+  const [prevButton, setPrevButton] = useState(null)
+
   const [isFocused, setIsFocused] = useState(false)
   const [isWordsFetched, setIsWordFetched] = useState(false)
 
 
   const [words,setWords] = useState([''])
-  const [gameLength, setGameLength] = useState(25);
+  const [gameLength, setGameLength] = useState(null);
   const [isGameFinished, setIsGameFinished] = useState(false)
   const [isGameStarted, setIsGameStarted] = useState(false)
   const [input,setInput] = useState([])
@@ -80,10 +83,10 @@ const App = () => {
       setIsGameStarted(isGameStarted)
       setIsGameFinished(isGameFinished)
       setIsFocused(isFocused)
-
+      setTargetButton(targetButton)
       
 
-  },[correctCount,incorrectCount,isGameStarted, isGameFinished, isFocused])
+  },[correctCount,incorrectCount,isGameStarted, isGameFinished, isFocused,targetButton])
  
   
     
@@ -94,22 +97,68 @@ const App = () => {
   
     const API_URL = 'http://localhost:8080/words'
 
+    
+    if(e) {
+      const value = e;
 
-      if(e){
-        const value = e
+      setGameLength(value || 25)
+
+         axios
+         .get(API_URL)
+         .then((resp) => {
+          
+          const data = resp.data
+          const shuffledArray = [...data].sort(() => Math.random() - 0.5);
+          const slicedArray = shuffledArray.slice(0, value)
+          
+          setWords(slicedArray)
+          setIsWordFetched(true)
+          setInput([])
+          setInserted([])
+          
+
+          {isGameFinished ? window.location.reload() : 
+            setIsGameFinished(false) 
+            setIsGameStarted(false)
+            setSeconds(0)
+            setMinutes(0)
+            setsecondsOutput('00')
+            setMinutesOutput('00')
+        }
+          
 
 
-        value.classList.remove('border-bottom')
-        value.classList.add('border-bottom')
-        
+      }).catch((err) => {
+        console.log("%cError :", 'background-color : #ff0000; color: white ; padding: 5px; border-radius: 20px; font-weigth: bold' , err)
+      })
+
+
+
     }
+
   }
+
+  const handleTargetButton = () => {
+
+    if (targetButton) {
+
+    btnRef.current.forEach((btn) => {
+      if (btn) btn.classList.remove("border-bottom");
+    });
+
+    targetButton.classList.add("border-bottom");
+  }
+
+
+  }
+
 
   useEffect(() => {
 
-      handleGameLength
+    handleGameLength(gameLength)
+    handleTargetButton(targetButton)
 
-  },[gameLength])
+  },[gameLength,targetButton,prevButton])
 
   const darkTheme = {backgroundColor: 'black', color : 'white'}
   const lightTheme = {backgroundColor : 'white', color: 'black'}
@@ -123,7 +172,7 @@ const App = () => {
       
       {supportedDevice ? 
         <>
-          <Header handleGameLength={handleGameLength} isGameStarted={isGameStarted} isGameFinished={isGameFinished} seconds={seconds} setSeconds={setSeconds} minutes={minutes} setMinutes={setMinutes } secondsOutput={secondsOutput} setsecondsOutput={setsecondsOutput } minutesOutput={minutesOutput}  setMinutesOutput={setMinutesOutput} inTime={inTime} setInTime={setInTime} btnRef={btnRef}/> 
+          <Header handleGameLength={handleGameLength} isGameStarted={isGameStarted} isGameFinished={isGameFinished} seconds={seconds} setSeconds={setSeconds} minutes={minutes} setMinutes={setMinutes } secondsOutput={secondsOutput} setsecondsOutput={setsecondsOutput } minutesOutput={minutesOutput}  setMinutesOutput={setMinutesOutput} inTime={inTime} setInTime={setInTime} btnRef={btnRef} setTargetButton={setTargetButton}/> 
       
           {!isGameFinished ? 
       
