@@ -15,8 +15,8 @@ const Final = ( {correctCount ,incorrectCount, inTime, minutesOutput ,secondsOut
         const secondsInMinutes = seconds / 60
         const totalTimeinMinute = minutes + secondsInMinutes
     
-        setRawWPM(totalWords / totalTimeinMinute)
-        setClearWPM(correctCount / totalTimeinMinute)
+        setRawWPM(Math.floor(totalWords / totalTimeinMinute))
+        setClearWPM(Math.floor(correctCount / totalTimeinMinute))
 
         }
    
