@@ -5,16 +5,61 @@
 
 .focused-container {
     position: relative;
-    top: 40%;
+    top: 13vh;
     display: flex;
     height: 50px;
 }
+
 .wrapper-container {
-    font-size: 24px;
+  position: relative;
+  display: inline-block;
+  height: auto;
+  padding-top: 25vh;
+  font-family: monospace; 
+  white-space: pre-wrap;  
+  line-height: 1.5;
 }
+
+.wrapper-container > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; 
+  height: 100%;
+}
+.wrapper-container span {
+    display: inline-block;  /* each char stays aligned */
+  min-width: 1ch;         /* ensures alignment */
+  text-align: center;
+}
+
+.words-container {
+  z-index: 0; 
+  color: gray;
+}
+ 
 .inserted-container {
-    top: -70px;
-    background-color: white;
-    opacity: 0.5;
-    width: fit-content;
+  z-index: 1; 
+  color: green;
+}
+
+.inputs {
+  z-index: 1; 
+  height: 40px;
+}
+
+.line {
+    position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+i {
+    cursor: pointer;
+}
+
+.inserted-container span {
+    border: none;
 }

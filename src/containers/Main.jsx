@@ -7,7 +7,7 @@ const Main = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
     
 
     return(
-        <div className="main-container" ref={divRef} tabIndex="-1" onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)}>
+        <div className="main-container container d-flex justify-content-center" ref={divRef} tabIndex="-1" onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)}>
 
             
             {!isWordsFetched ? <h1>Choose Game Length...</h1> : <Game words={words} setIsGameFinished={setIsGameFinished} setCorrectCount={setCorrectCount} setInserted={setInserted}  inserted={inserted} setIncorrectCount={setIncorrectCount} setIsGameStarted={setIsGameStarted} isGameStarted={isGameStarted} isWordsFetched={isWordsFetched} isFocused={isFocused} input={input} setInput={setInput} setTarget={setTarget} target={target}/>}

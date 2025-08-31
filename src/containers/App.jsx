@@ -12,6 +12,10 @@ import { useEffect, useRef, useState } from "react";
 
 const App = () => {
 
+  //TODO : prevent user to delete pervious words in Game.jsx
+  //TODO : fix incorrect letters append in inserted
+  //TODO : stop timer when user is not focused on typing
+
   //TODO : add custom text size for preferences
   //TODO : rewrite styling variables (line 118-123) wiht bootstrap styling and create text color for buttons in header when theme changes {use objects exl: const darkTheme = {theme : 'dark', btnColor : 'text-info'}}
 
@@ -19,6 +23,7 @@ const App = () => {
   //TODO : add text in Unsupported Component
   //TODO : change start again btn in footer with icon and add comments in Footer 
   
+  //TODO : fix padding/ margin y so poage wont be scrollable
   //TODO : finish UI design 
   
   //TODO : cleanup code & documentate it
@@ -65,9 +70,10 @@ const App = () => {
 
   useEffect(() => {
 
+
       setUserDevice(userDevice => userDevice = deviceType)
 
-      {userDevice !== 'Desktop' ? setSupportedDevice(true) : setSupportedDevice(false)}
+      {deviceType !== 'Desktop' ? setSupportedDevice(false) : setSupportedDevice(true)}
     
 
   },[deviceType])

@@ -3,7 +3,7 @@ import { useRef,useEffect,useState } from "react";
 
 import Focused from "../components/Focused";
 import Wrapper from "./Wrapper";
-import Inserted from "../components/Inserted";
+import Redo from '../components/Redo'
 
 
 const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , inserted , setIncorrectCount, setIsGameStarted, isGameStarted, isWordsFetched, isFocused , input, setInput, setTarget, target} ) => {
@@ -47,10 +47,11 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
 
 
                 if(inputLastLetter  === targetWord[lastIndex]){
-                  letterRef.current[lastIndex - 1].classList.add('text-success')
+                  
+                    letterRef.current[lastIndex - 1].classList.add('text-success')
               
                 }else {
-                    letterRef.current[lastIndex].classList.add('text-danger')
+                    letterRef.current[lastIndex].classList.add('text-danger' , 'bg-warning')
                 }
                 
                 setTargetLetter(targetLetter => targetLetter = inputLastLetter)
@@ -103,13 +104,13 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
 
                     const leftLetters = Array.from({ length: diff }, (_, i) => ({
                     text: correctWord[input.length + i],
-                    className: "leftover"
+                    className: "leftover bg-primary"
                 }));
 
                 const mergedInput = [...typedLetters, ...leftLetters];
                 
                 setTarget(target => target + 1);
-                setInserted(inserted => [...inserted, ...mergedInput]);
+                setInserted(inserted => [...inserted , mergedInput]);
                 setInput([]);
 
                 }else {
@@ -117,7 +118,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                     setInput([])
                     setTarget(target => target + 1)
                     setInserted(inserted => [...inserted , {text : input ,className : letterRef.current[lastIndex].classList }])
-                    console.log(Inserted)
+
                 }
                
 
@@ -232,13 +233,14 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
 }
 
     return (
-        <div className="game-container container border border-2 border-secondary rounded-3 p-5">
+        <div className="game-container container py-2">
             
             
             <Focused isFocused={isFocused}/>
 
             <Wrapper words={words} wordRef={wordRef} inserted={inserted} input={input} letterRef={letterRef} targetLetter={targetLetter} handleRedo={handleRedo} isFocused={isFocused}/>
 
+            <Redo handleRedo={handleRedo} input={input}/>
         </div>
     );
 };
