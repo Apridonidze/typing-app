@@ -55,7 +55,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                     letterRef.current[lastIndex - 1].classList.add('text-success')
                     
                 }else {
-                    letterRef.current[lastIndex].classList.add('text-danger' , 'bg-warning')
+                    letterRef.current[lastIndex].classList.add('text-danger' , 'bg-')
 
                 }
                 

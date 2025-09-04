@@ -13,6 +13,8 @@ import { useEffect, useRef, useState } from "react";
 const App = () => {
 
 
+  //TODO : add styling for input (if input === targeword make input success else danger)
+  //TODO : fix underline for last letters 
   //TODO : add custom text size for preferences
   //TODO : rewrite styling variables (line 118-123) wiht bootstrap styling and create text color for buttons in header when theme changes {use objects exl: const darkTheme = {theme : 'dark', btnColor : 'text-info'}}
 
@@ -22,6 +24,7 @@ const App = () => {
   
   //TODO : fix padding/ margin y so poage wont be scrollable
   //TODO : finish UI design 
+  //TOPO : add styling for left letters and incorrect letters
   
   //TODO : cleanup code & documentate it
   //TODO : make website SEO optimazed
