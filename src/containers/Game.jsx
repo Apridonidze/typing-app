@@ -158,52 +158,17 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
             }else if (e.key === 'Backspace' ){
 
 
-                if (input.length > 0){
-                    setInput(input.slice(0 , -1))
-                }
+                if (input.length > 0)setInput(input.slice(0 , -1))
 
 
-                if(input.length < 1){
-                    setInput([])
+                if(input.length === 0)setInput([]); return;
 
-                    if(inserted.length > 0){
 
-                        setInserted(inserted.slice(0, -1))
-                        setTarget(target => target = inserted.length -1 )
-                        setInput(inserted[inserted.length - 1].text)
-                        
-                       if(inserted.length > 0){
-
-                        const lastInserted = inserted[inserted.length - 1].text
-
-                        setInput( () => {
-
-                            let lastInsertedCopy = [...lastInserted]
-                            while(lastInsertedCopy[lastInsertedCopy.length - 1] === '_'){
-                                lastInsertedCopy.pop()
-                            }
-                            return lastInsertedCopy
-                        }
-                        )
-
-                       }else {
-                        setInput([])
-                       } 
-
-                } 
-                
-                if(target < 1){
-                    setTarget(0)
-                    return
-                }
-                    return
-                }
-
-            }else if (e.key.length > 1){
-                return
-            }else if (regex.test(e.key) === false){
-                return
             }
+
+            else if (e.key.length > 1)return    
+            else if (regex.test(e.key) === false)return
+            
             else {
                 
                 

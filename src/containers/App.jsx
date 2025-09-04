@@ -12,8 +12,6 @@ import { useEffect, useRef, useState } from "react";
 
 const App = () => {
 
-  //TODO : prevent user to delete pervious words in Game.jsx
-  //TODO : stop timer when user is not focused on typing
 
   //TODO : add custom text size for preferences
   //TODO : rewrite styling variables (line 118-123) wiht bootstrap styling and create text color for buttons in header when theme changes {use objects exl: const darkTheme = {theme : 'dark', btnColor : 'text-info'}}
