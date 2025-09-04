@@ -25,7 +25,7 @@ const Timer = ( { seconds ,setSeconds ,minutes ,setMinutes, secondsOutput, setse
         if(minutes >= 59){
           setSeconds(seconds => seconds[seconds.length - 1])
           setMinutes(seconds => seconds[seconds.length - 1])
-          console.log('you took too long to compete this game')
+          
           setInTime(false)
           isGameFinished(true)
         }

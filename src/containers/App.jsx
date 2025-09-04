@@ -13,15 +13,14 @@ import { useEffect, useRef, useState } from "react";
 const App = () => {
 
   //TODO : prevent user to delete pervious words in Game.jsx
-  //TODO : fix incorrect letters append in inserted
   //TODO : stop timer when user is not focused on typing
 
   //TODO : add custom text size for preferences
   //TODO : rewrite styling variables (line 118-123) wiht bootstrap styling and create text color for buttons in header when theme changes {use objects exl: const darkTheme = {theme : 'dark', btnColor : 'text-info'}}
 
-  //TODO : add contact in Footer
+  //TODO : add contact in Footer : GitHub, Linkedin, Gmail
+  //TODO : add version description if Footer
   //TODO : add text in Unsupported Component
-  //TODO : change start again btn in footer with icon and add comments in Footer 
   
   //TODO : fix padding/ margin y so poage wont be scrollable
   //TODO : finish UI design 
@@ -34,7 +33,6 @@ const App = () => {
   const btnRef = useRef([null])
 
   const [targetButton, setTargetButton] = useState(null)
-  const [prevButton, setPrevButton] = useState(null)
 
   const [isFocused, setIsFocused] = useState(false)
   const [isWordsFetched, setIsWordFetched] = useState(false)
@@ -161,7 +159,7 @@ const App = () => {
     handleGameLength(gameLength)
     handleTargetButton(targetButton)
 
-  },[gameLength,targetButton,prevButton])
+  },[gameLength,targetButton])
 
   const darkTheme = {backgroundColor: 'black', color : 'white'}
   const lightTheme = {backgroundColor : 'white', color: 'black'}
@@ -171,9 +169,10 @@ const App = () => {
   const creamsicle = {backgroundColor: '#ff9869' , color : 'white'}
 
   return(
-    <div className="app-container container-fluid min-vh-100 d-flex flex-column justify-content-between gap-5" style={devTheme}>
+    <div style={devTheme} className="app-container container-fluid min-vh-100 d-flex flex-column justify-content-between gap-5 " >
       
       {supportedDevice ? 
+      
         <>
           <Header handleGameLength={handleGameLength} isGameStarted={isGameStarted} isGameFinished={isGameFinished} seconds={seconds} setSeconds={setSeconds} minutes={minutes} setMinutes={setMinutes } secondsOutput={secondsOutput} setsecondsOutput={setsecondsOutput } minutesOutput={minutesOutput}  setMinutesOutput={setMinutesOutput} inTime={inTime} setInTime={setInTime} btnRef={btnRef} setTargetButton={setTargetButton}/> 
       

@@ -40,7 +40,7 @@ const Final = ( {correctCount ,incorrectCount, inTime, minutesOutput ,secondsOut
 
             <span>Total Word Count : {totalWords}</span><br />
             <span>Correct Word Count: {correctCount}</span><br />
-            <span>inCorerct Word Count :{incorrectCount}</span><br />
+            <span>Incorrect Word Count :{incorrectCount}</span><br />
 
             {inTime ? <span>You Finished in {minutesOutput} : {secondsOutput}</span> : <span>You Did Not Make It In Time</span>}<br />
 
