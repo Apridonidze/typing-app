@@ -15,16 +15,17 @@ const App = () => {
 
   //TODO : add styling for input (if input === targeword make input success else danger)
   //TODO : fix underline for last letters 
+  
   //TODO : add custom text size for preferences
+  //TODO : fix text sizing and redo container colliding
+  //TODO : finish UI design 
+  //TOPO : add styling for left letters and incorrect letters
   //TODO : rewrite styling variables (line 118-123) wiht bootstrap styling and create text color for buttons in header when theme changes {use objects exl: const darkTheme = {theme : 'dark', btnColor : 'text-info'}}
-
+  
   //TODO : add contact in Footer : GitHub, Linkedin, Gmail
   //TODO : add version description if Footer
   //TODO : add text in Unsupported Component
   
-  //TODO : fix padding/ margin y so poage wont be scrollable
-  //TODO : finish UI design 
-  //TOPO : add styling for left letters and incorrect letters
   
   //TODO : cleanup code & documentate it
   //TODO : make website SEO optimazed
@@ -58,7 +59,6 @@ const App = () => {
   const [inTime,setInTime] = useState(true)
 
 
-  const [userDevice, setUserDevice] = useState('')
   const [supportedDevice,setSupportedDevice] = useState(null)
 
   const userAgent = navigator.userAgent.toLowerCase()
@@ -69,30 +69,9 @@ const App = () => {
 
   useEffect(() => {
 
-
-      setUserDevice(userDevice => userDevice = deviceType)
-
       {deviceType !== 'Desktop' ? setSupportedDevice(false) : setSupportedDevice(true)}
-    
 
   },[deviceType])
-
-
-  useEffect(() => {
-
-      setCorrectCount(correctCount)
-      setIncorrectCount(incorrectCount)
-      setIsGameStarted(isGameStarted)
-      setIsGameFinished(isGameFinished)
-      setIsFocused(isFocused)
-      setTargetButton(targetButton)
-      
-
-  },[correctCount,incorrectCount,isGameStarted, isGameFinished, isFocused,targetButton])
- 
-  
-    
-
     
 
   const handleGameLength = (e) => {

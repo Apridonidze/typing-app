@@ -11,7 +11,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
     const letterRef = useRef([])
 
     const [targetWord, setTargetWord] = useState('')
-    const [targetLetter, setTargetLetter] = useState(0) 
+    const [targetLetter, setTargetLetter] = useState(0)
 
 
     useEffect(() => {
@@ -33,29 +33,24 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                 if(!inputLastLetter || !targetLastLetter ) return;
 
 
+                if(lastIndex >= 0 && letterRef.current[lastIndex] ){
+                    letterRef.current[lastIndex].classList.add('border-bottom')
+
+                    if(lastIndex > 0 && letterRef.current[lastIndex - 1]){
+                        letterRef.current[lastIndex - 1].classList.remove('border-bottom')
+                    }
+                }
                    
-             if(letterRef.current){
-                 
-
-
-                if(lastIndex < 1)return
-                
-                letterRef.current[lastIndex - 1].classList.remove('border-bottom')
-                letterRef.current[lastIndex].classList.add('border-bottom')
-
-                if(lastIndex === input.length) letterRef.current[input.length].classList.remove('border-bottom')
-               
-
-             }else return;
+            else return;
 
 
 
                 if(inputLastLetter  === targetWord[lastIndex]){
                   
-                    letterRef.current[lastIndex - 1].classList.add('text-success')
+                    letterRef.current[lastIndex].classList.add('text-success')
                     
                 }else {
-                    letterRef.current[lastIndex].classList.add('text-danger' , 'bg-')
+                    letterRef.current[lastIndex].classList.add('text-danger' , 'bg-warning')
 
                 }
                 
@@ -85,11 +80,11 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
             if(e.key === 'Enter' || e.key === ' '){
 
                 const correctWord = wordRef.current[target].textContent
-                const lastIndex = input.length - 1
 
-               
+               if(input.length < 1) return;
 
                 if(input.join('') == correctWord) setCorrectCount(correctCount => correctCount + 1)
+
                 else setIncorrectCount(incorrectCount => incorrectCount + 1)
                 
 
@@ -112,11 +107,9 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                     }));
 
 
-
                     const mergedInput = [...typedLetters, ...leftLetters]
 
-
-
+                    
 
                     setInput([])
                     setTarget(target => target + 1)
@@ -136,6 +129,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
 
                     setInput([])
                     setTarget(target => target + 1)
+                    
                     setInserted(inserted => [...inserted , typedLetters])
                     
                 }
