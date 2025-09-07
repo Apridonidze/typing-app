@@ -5,7 +5,7 @@ import Wrapper from "./Wrapper";
 import Redo from '../components/Redo'
 
 
-const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , inserted , setIncorrectCount, setIsGameStarted, isGameStarted, isWordsFetched, isFocused , input, setInput, setTarget, target, correctCount,incorrectCount} ) => {
+const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , inserted , setIncorrectCount, setIsGameStarted, isGameStarted, isWordsFetched, isFocused , input, setInput, setTarget, target, correctCount,incorrectCount, theme} ) => {
 
     const inputRef = useRef(null)
 
@@ -239,7 +239,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
 
             <Wrapper words={words} wordRef={wordRef} inserted={inserted} input={input} letterRef={letterRef} targetLetter={targetLetter} handleRedo={handleRedo} isFocused={isFocused} insertedRef={insertedRef} insertedLetterRef={insertedLetterRef}/>
 
-            <Redo handleRedo={handleRedo} input={input} inputRef={inputRef}/>
+            <Redo handleRedo={handleRedo} input={input} inputRef={inputRef} theme={theme}/>
         </div>
     );
 };

@@ -18,7 +18,6 @@ const App = () => {
   
   //TODO : add custom text size for preferences
   //TODO : rewrite styling variables (line 118-123) wiht bootstrap styling and create text color for buttons in header when theme changes {use objects exl: const darkTheme = {theme : 'dark', btnColor : 'text-info'}}
-  //TODO : finish UI design 
   
   //TODO : add contact in Footer : GitHub, Linkedin, Gmail
   //TODO : add version description if Footer
@@ -64,12 +63,20 @@ const App = () => {
   const isTablet = /(ipad|tablet|playbook|silk)|(android(?!.*mobile))/g.test(userAgent);
   const deviceType = isMobile ? 'Mobile' : (isTablet ? 'Tablet' : 'Desktop');
 
+  const [theme,setTheme] = useState(null)
+
 
   useEffect(() => {
 
       {deviceType !== 'Desktop' ? setSupportedDevice(false) : setSupportedDevice(true)}
 
   },[deviceType])
+
+  useEffect(() => {
+
+    setTheme(theme => theme = devTheme)
+
+  },[theme])
     
 
   const handleGameLength = (e) => {
@@ -146,17 +153,19 @@ const App = () => {
   const vsCodeTheme = {backgroundColor: '#1e1e1e', color : 'white'}
   const creamsicle = {backgroundColor: '#ff9869' , color : 'white'}
 
+
+
   return(
-    <div style={devTheme} className="app-container container-fluid min-vh-100 d-flex flex-column justify-content-between gap-5 " >
+    <div style={theme} className="app-container container-fluid min-vh-100 d-flex flex-column justify-content-between gap-5 " >
       
       {supportedDevice ? 
       
         <>
-          <Header handleGameLength={handleGameLength} isGameStarted={isGameStarted} isGameFinished={isGameFinished} seconds={seconds} setSeconds={setSeconds} minutes={minutes} setMinutes={setMinutes } secondsOutput={secondsOutput} setsecondsOutput={setsecondsOutput } minutesOutput={minutesOutput}  setMinutesOutput={setMinutesOutput} inTime={inTime} setInTime={setInTime} btnRef={btnRef} setTargetButton={setTargetButton}/> 
+          <Header handleGameLength={handleGameLength} isGameStarted={isGameStarted} isGameFinished={isGameFinished} seconds={seconds} setSeconds={setSeconds} minutes={minutes} setMinutes={setMinutes } secondsOutput={secondsOutput} setsecondsOutput={setsecondsOutput } minutesOutput={minutesOutput}  setMinutesOutput={setMinutesOutput} inTime={inTime} setInTime={setInTime} btnRef={btnRef} setTargetButton={setTargetButton} theme={theme}/> 
       
           {!isGameFinished ? 
       
-            <Main words={words} setIsGameFinished={setIsGameFinished} setCorrectCount={setCorrectCount} setInserted={setInserted} correctCount={correctCount} inserted={inserted} setIncorrectCount={setIncorrectCount} incorrectCount={incorrectCount} setIsGameStarted={setIsGameStarted} isFocused={isFocused} setIsFocused={setIsFocused} isWordsFetched={isWordsFetched} divRef={divRef} input={input} setInput={setInput} setTarget={setTarget} target={target} /> 
+            <Main words={words} setIsGameFinished={setIsGameFinished} setCorrectCount={setCorrectCount} setInserted={setInserted} correctCount={correctCount} inserted={inserted} setIncorrectCount={setIncorrectCount} incorrectCount={incorrectCount} setIsGameStarted={setIsGameStarted} isFocused={isFocused} setIsFocused={setIsFocused} isWordsFetched={isWordsFetched} divRef={divRef} input={input} setInput={setInput} setTarget={setTarget} target={target} theme={theme}/> 
       
           :
       
@@ -164,7 +173,7 @@ const App = () => {
       
       }
       
-        <Footer />
+        <Footer theme={theme}/>
       
       </> 
       
