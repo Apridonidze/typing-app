@@ -81,6 +81,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
     },[input,letterRef,insertedLetterRef])
 
     
+    
 
     useEffect(() => {
 
@@ -237,7 +238,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
             
             <Focused isFocused={isFocused}/>
 
-            <Wrapper words={words} wordRef={wordRef} inserted={inserted} input={input} letterRef={letterRef} targetLetter={targetLetter} handleRedo={handleRedo} isFocused={isFocused} insertedRef={insertedRef} insertedLetterRef={insertedLetterRef}/>
+            <Wrapper words={words} wordRef={wordRef} inserted={inserted} input={input} letterRef={letterRef} targetLetter={targetLetter} handleRedo={handleRedo} isFocused={isFocused} insertedRef={insertedRef} insertedLetterRef={insertedLetterRef} />
 
             <Redo handleRedo={handleRedo} input={input} inputRef={inputRef} theme={theme}/>
         </div>

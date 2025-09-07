@@ -76,7 +76,7 @@ const App = () => {
 
     setTheme(theme => theme = devTheme)
 
-  },[theme])
+  },[])
     
 
   const handleGameLength = (e) => {
