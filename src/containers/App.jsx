@@ -6,6 +6,7 @@ import Final from "./Final";
 import Header from "./Header";
 import Footer from "./Footer";
 
+import Theme from "../components/Theme";
 import Unsupported from "../components/Unsupported";
 
 
@@ -16,7 +17,7 @@ const App = () => {
 
 
   
-  //TODO : add custom text size for preferences
+  //TODO : add custom text size for preferences in theme
  
   //TODO : add contact in Footer : GitHub, Linkedin, Gmail
   //TODO : add version description if Footer
@@ -73,8 +74,8 @@ const App = () => {
   
   const [theme,setTheme] = useState(null)
   const [themeTxt,setThemeTxt] = useState('')
+  const [toggleTheme, setToggleTheme] = useState(false)
   const themes = [darkTheme, lightTheme,devTheme,matrixTheme,vsCodeTheme,creamsicle]
-
 
 
   useEffect(() => {
@@ -83,7 +84,7 @@ const App = () => {
 
   },[deviceType])
 
-    
+    console.log(toggleTheme)
 
   const handleGameLength = (e) => {
   
@@ -172,7 +173,13 @@ const App = () => {
       {supportedDevice ? 
       
         <>
-          <Header handleGameLength={handleGameLength} isGameStarted={isGameStarted} isGameFinished={isGameFinished} seconds={seconds} setSeconds={setSeconds} minutes={minutes} setMinutes={setMinutes } secondsOutput={secondsOutput} setsecondsOutput={setsecondsOutput } minutesOutput={minutesOutput}  setMinutesOutput={setMinutesOutput} inTime={inTime} setInTime={setInTime} btnRef={btnRef} setTargetButton={setTargetButton} theme={theme}/> 
+         
+         {toggleTheme ? <Theme handleThemeButtons={handleThemeButtons} setTheme={setTheme} theme={theme} themes={themes}/> : 
+         
+         
+         <>
+         
+         <Header handleGameLength={handleGameLength} isGameStarted={isGameStarted} isGameFinished={isGameFinished} seconds={seconds} setSeconds={setSeconds} minutes={minutes} setMinutes={setMinutes } secondsOutput={secondsOutput} setsecondsOutput={setsecondsOutput } minutesOutput={minutesOutput}  setMinutesOutput={setMinutesOutput} inTime={inTime} setInTime={setInTime} btnRef={btnRef} setTargetButton={setTargetButton} theme={theme}/> 
       
           {!isGameFinished ? 
       
@@ -180,11 +187,16 @@ const App = () => {
       
           :
       
-          <Final correctCount={correctCount} incorrectCount={incorrectCount} inTime={inTime} minutesOutput={minutesOutput} secondsOutput={secondsOutput} minutes={minutes} seconds={seconds}/> 
+        <Final correctCount={correctCount} incorrectCount={incorrectCount} inTime={inTime} minutesOutput={minutesOutput} secondsOutput={secondsOutput} minutes={minutes} seconds={seconds}/> 
+        
+        }
+      
+      </>
       
       }
       
-        <Footer handleThemeButtons={handleThemeButtons} setTheme={setTheme} themes={themes} theme={theme} themeTxt={themeTxt}/>
+      
+        <Footer handleThemeButtons={handleThemeButtons} setTheme={setTheme} themes={themes} theme={theme} themeTxt={themeTxt} setToggleTheme={setToggleTheme} toggleTheme={toggleTheme}/>
       
       </> 
       

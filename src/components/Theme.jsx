@@ -6,7 +6,7 @@ const Theme = ({handleThemeButtons, themes}) => {
     
 
     return(
-        <div className="theme-container">
+        <div className="theme-container container">
             Theme.jsx
 
             {themes.map((th,thId) => (
