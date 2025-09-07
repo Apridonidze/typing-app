@@ -16,12 +16,12 @@ import { useEffect, useRef, useState } from "react";
 const App = () => {
 
 
-  
   //TODO : add custom text size for preferences in theme
+  //TODO : finish theme component styling
  
   //TODO : add contact in Footer : GitHub, Linkedin, Gmail
-  //TODO : add version description if Footer
-  //TODO : add text in Unsupported Component
+  //TODO : add version description if Footer (create component that appends when desc button is clicked)
+  //TODO : add text in Unsupported Component ("in our current version your device is not supported")
   
   //TODO : cleanup code & documentate it
   //TODO : make website SEO optimazed
