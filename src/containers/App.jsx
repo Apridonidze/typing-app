@@ -17,8 +17,7 @@ const App = () => {
 
   
   //TODO : add custom text size for preferences
-  //TODO : rewrite styling variables (line 118-123) wiht bootstrap styling and create text color for buttons in header when theme changes {use objects exl: const darkTheme = {theme : 'dark', btnColor : 'text-info'}}
-  
+ 
   //TODO : add contact in Footer : GitHub, Linkedin, Gmail
   //TODO : add version description if Footer
   //TODO : add text in Unsupported Component
@@ -63,7 +62,18 @@ const App = () => {
   const isTablet = /(ipad|tablet|playbook|silk)|(android(?!.*mobile))/g.test(userAgent);
   const deviceType = isMobile ? 'Mobile' : (isTablet ? 'Tablet' : 'Desktop');
 
+  
+  const darkTheme = {theme : 'dark theme',backgroundColor: 'black', color : 'white'}
+  const lightTheme = {theme : 'light theme',backgroundColor : 'white', color: 'black'}
+  const devTheme = {theme : 'dev theme',backgroundColor : '#1b2028', color : '#23a9d5'}
+  const matrixTheme = {theme : 'matrix theme',backgroundColor : '#000000 ', color : '#15ff00'}
+  const vsCodeTheme = {theme : 'vsCode theme',backgroundColor: '#1e1e1e', color : 'white'}
+  const creamsicle = {theme : 'creamSicle theme',backgroundColor: '#ff9869' , color : 'white'}
+  
+  
   const [theme,setTheme] = useState(null)
+  const themes = [darkTheme, lightTheme,devTheme,matrixTheme,vsCodeTheme,creamsicle]
+
 
 
   useEffect(() => {
@@ -74,7 +84,7 @@ const App = () => {
 
   useEffect(() => {
 
-    setTheme(theme => theme = devTheme)
+    setTheme(theme)
 
   },[])
     
@@ -124,6 +134,13 @@ const App = () => {
 
   }
 
+  const handleThemeButtons = (themeObj) => {
+
+    const targetThemeObj = {backgroundColor : themeObj.backgroundColor, color: themeObj.color}
+    setTheme(theme => theme = targetThemeObj)
+
+  }
+
   const handleTargetButton = () => {
 
     if (targetButton) {
@@ -139,6 +156,7 @@ const App = () => {
   }
 
 
+
   useEffect(() => {
 
     handleGameLength(gameLength)
@@ -146,13 +164,7 @@ const App = () => {
 
   },[gameLength,targetButton])
 
-  const darkTheme = {backgroundColor: 'black', color : 'white'}
-  const lightTheme = {backgroundColor : 'white', color: 'black'}
-  const devTheme = {backgroundColor : '#1b2028', color : '#23a9d5'}
-  const matrixTheme = {backgroundColor : '#000000 ', color : '#15ff00'}
-  const vsCodeTheme = {backgroundColor: '#1e1e1e', color : 'white'}
-  const creamsicle = {backgroundColor: '#ff9869' , color : 'white'}
-
+  
 
 
   return(
@@ -173,7 +185,7 @@ const App = () => {
       
       }
       
-        <Footer theme={theme}/>
+        <Footer handleThemeButtons={handleThemeButtons} setTheme={setTheme} themes={themes} theme={theme} />
       
       </> 
       

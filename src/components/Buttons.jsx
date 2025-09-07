@@ -1,7 +1,6 @@
 const buttonValues = [10, 25, 50, 60, 100];
 
 
-  const darkTheme = {backgroundColor: 'black', color : 'white'}
 
 const Buttons = ( { handleGameLength, btnRef, setTargetButton,theme } ) => {
     return(
