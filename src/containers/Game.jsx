@@ -10,38 +10,42 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
     const wordRef = useRef([])
     const letterRef = useRef([])
 
-    const [targetWord, setTargetWord] = useState('')
+    const insertedRef = useRef([])
+    const insertedLetterRef = useRef([])
+
+    const [targetWord, setTargetWord] = useState([''])
     const [targetLetter, setTargetLetter] = useState(0)
 
+    
+    insertedLetterRef.current = []
 
     useEffect(() => {
+        
+        setTargetWord(targetWord => [...targetWord ,wordRef.current[target].textContent][targetWord.length])
+        
+        
+        if(wordRef.current || letterRef.current){
 
-
-         if(wordRef.current || letterRef.current){
-             
-            setTargetWord(targetWord => targetWord = wordRef.current[target].textContent)
-             
-
+            
+            
             if(targetWord){
-
+                
                 const lastIndex = input.length - 1
                 const inputLastLetter = input[lastIndex]
                 const targetLastLetter = targetWord[lastIndex]
-
-
-               
+                
+ 
                 if(!inputLastLetter || !targetLastLetter ) return;
 
+                if(lastIndex >= 0 && letterRef.current[lastIndex] )letterRef.current[lastIndex].classList.add('border-end')
 
-                if(lastIndex >= 0 && letterRef.current[lastIndex] ){
-                    letterRef.current[lastIndex].classList.add('border-bottom')
+                if(lastIndex > 0 && letterRef.current[lastIndex - 1])letterRef.current[lastIndex - 1].classList.remove('border-end')
 
-                    if(lastIndex > 0 && letterRef.current[lastIndex - 1]){
-                        letterRef.current[lastIndex - 1].classList.remove('border-bottom')
-                    }
-                }
-                   
-            else return;
+
+                if(insertedLetterRef.current && insertedLetterRef.current.length > 0) insertedLetterRef.current.forEach((insLett) => {
+                    if(insLett) insLett.classList.remove('border-end')
+                })
+
 
 
 
@@ -55,7 +59,6 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                 }
                 
                 setTargetLetter(targetLetter => targetLetter = letterRef.current[lastIndex])
-                
 
                 
             }
@@ -63,7 +66,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
 
         }
 
-    },[input,letterRef])
+    },[input,letterRef,insertedLetterRef])
 
     
 
@@ -146,7 +149,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                     setInserted(inserted)
 
                     return
-                }           
+                }
                 
 
             }else if (e.key === 'Backspace' ){
@@ -216,7 +219,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
             
             <Focused isFocused={isFocused}/>
 
-            <Wrapper words={words} wordRef={wordRef} inserted={inserted} input={input} letterRef={letterRef} targetLetter={targetLetter} handleRedo={handleRedo} isFocused={isFocused}/>
+            <Wrapper words={words} wordRef={wordRef} inserted={inserted} input={input} letterRef={letterRef} targetLetter={targetLetter} handleRedo={handleRedo} isFocused={isFocused} insertedRef={insertedRef} insertedLetterRef={insertedLetterRef}/>
 
             <Redo handleRedo={handleRedo} input={input}/>
         </div>

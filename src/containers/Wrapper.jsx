@@ -1,6 +1,6 @@
 import Words from "../components/Words"
 
-const Wrapper = ( { words, wordRef, inserted, input,letterRef, isFocused} ) => {
+const Wrapper = ( { words, wordRef, inserted, input,letterRef, isFocused, insertedRef, insertedLetterRef} ) => {
 
     return(
         <div className="wrapper-container container h-20px d-flex flex-column " style={!isFocused ? {filter : 'blur(5px)'} : {filter : 'blur(0px)'}}>
@@ -10,9 +10,9 @@ const Wrapper = ( { words, wordRef, inserted, input,letterRef, isFocused} ) => {
         <div className="line container">
             
             {inserted.map((word,wordId) => (
-                <span className={word.className  + ' me-2'} key={wordId}>
+                <span className={word.className  + ' me-2'} key={wordId} ref={e => insertedRef.current[wordId] = e}>
                     {word.map((char,charId) => (
-                        <span key={charId} className={char.className}>{char.text}</span>
+                        <span key={charId} className={char.className} ref={e => insertedLetterRef.current[charId] = e}>{char.text}</span>
                     ))}
                 </span>
             ))
