@@ -7,6 +7,8 @@ import Redo from '../components/Redo'
 
 const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , inserted , setIncorrectCount, setIsGameStarted, isGameStarted, isWordsFetched, isFocused , input, setInput, setTarget, target, correctCount,incorrectCount} ) => {
 
+    const inputRef = useRef(null)
+
     const wordRef = useRef([])
     const letterRef = useRef([])
 
@@ -33,6 +35,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                 const lastIndex = input.length - 1
                 const inputLastLetter = input[lastIndex]
                 const targetLastLetter = targetWord[lastIndex]
+                const correctWord = wordRef.current[target].textContent
                 
  
                 if(!inputLastLetter || !targetLastLetter ) return;
@@ -48,15 +51,24 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
 
 
 
-
                 if(inputLastLetter  === targetWord[lastIndex]){
                   
                     letterRef.current[lastIndex].classList.add('text-success')
-                    
-                }else {
-                    letterRef.current[lastIndex].classList.add('text-danger' , 'bg-warning')
+                     
+                    inputRef.current.classList.add('bg-success');
 
+                }else {
+                    
+                    letterRef.current[lastIndex].classList.add('text-danger' , 'bg-warning')
+                     
+                     
+                    inputRef.current.classList.remove('bg-success');
+                    inputRef.current.classList.add('bg-warning');
+                    
                 }
+                
+                
+
                 
                 setTargetLetter(targetLetter => targetLetter = letterRef.current[lastIndex])
 
@@ -85,13 +97,15 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                 const correctWord = wordRef.current[target].textContent
 
                if(input.length < 1) return;
+               
 
-                if(input.join('') == correctWord) setCorrectCount(correctCount => correctCount + 1)
-
-                else setIncorrectCount(incorrectCount => incorrectCount + 1)
-                
+                if(input.join('') == correctWord){ setCorrectCount(correctCount => correctCount + 1); inputRef.current.classList.remove('bg-warning');inputRef.current.classList.add('bg-success');
+                }
+                else {setIncorrectCount(incorrectCount => incorrectCount + 1);inputRef.current.classList.remove('bg-success');inputRef.current.classList.add('bg-warning');
+                }
 
                 if(input.length < correctWord.length){
+
 
                     const diff = correctWord.length - input.length
 
@@ -131,6 +145,8 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                     
 
                     setInput([])
+                    inputRef.current.classList.remove('bg-warning', 'bg-success'); 
+
                     setTarget(target => target + 1)
                     
                     setInserted(inserted => [...inserted , typedLetters])
@@ -158,7 +174,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                 if (input.length > 0)setInput(input.slice(0 , -1))
 
 
-                if(input.length === 0)setInput([]); return;
+                if(input.length === 0 )setInput([]); ; return;
 
 
             }
@@ -171,6 +187,8 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                 
                 setInput(input => [...input ,e.key])
 
+                
+            
                 if(input.length > wordRef.current[target].textContent.length - 1){
                     setInput(input.slice(0, wordRef.current[target].textContent.length))
                     return
@@ -221,7 +239,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
 
             <Wrapper words={words} wordRef={wordRef} inserted={inserted} input={input} letterRef={letterRef} targetLetter={targetLetter} handleRedo={handleRedo} isFocused={isFocused} insertedRef={insertedRef} insertedLetterRef={insertedLetterRef}/>
 
-            <Redo handleRedo={handleRedo} input={input}/>
+            <Redo handleRedo={handleRedo} input={input} inputRef={inputRef}/>
         </div>
     );
 };

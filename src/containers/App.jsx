@@ -1,9 +1,11 @@
 import axios from "axios";
 
+
 import Main from "./Main";
 import Final from "./Final";
 import Header from "./Header";
 import Footer from "./Footer";
+
 import Unsupported from "../components/Unsupported";
 
 
@@ -13,19 +15,14 @@ import { useEffect, useRef, useState } from "react";
 const App = () => {
 
 
-  //TODO : add styling for input (if input === targeword make input success else danger)
-  //TODO : fix underline for last letters 
   
   //TODO : add custom text size for preferences
-  //TODO : fix text sizing and redo container colliding
   //TODO : finish UI design 
-  //TOPO : add styling for left letters and incorrect letters
   //TODO : rewrite styling variables (line 118-123) wiht bootstrap styling and create text color for buttons in header when theme changes {use objects exl: const darkTheme = {theme : 'dark', btnColor : 'text-info'}}
   
   //TODO : add contact in Footer : GitHub, Linkedin, Gmail
   //TODO : add version description if Footer
   //TODO : add text in Unsupported Component
-  
   
   //TODO : cleanup code & documentate it
   //TODO : make website SEO optimazed
@@ -33,6 +30,7 @@ const App = () => {
   
   const divRef = useRef(null)
   const btnRef = useRef([null])
+
 
   const [targetButton, setTargetButton] = useState(null)
 
