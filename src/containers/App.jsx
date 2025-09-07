@@ -17,8 +17,8 @@ const App = () => {
 
   
   //TODO : add custom text size for preferences
-  //TODO : finish UI design 
   //TODO : rewrite styling variables (line 118-123) wiht bootstrap styling and create text color for buttons in header when theme changes {use objects exl: const darkTheme = {theme : 'dark', btnColor : 'text-info'}}
+  //TODO : finish UI design 
   
   //TODO : add contact in Footer : GitHub, Linkedin, Gmail
   //TODO : add version description if Footer

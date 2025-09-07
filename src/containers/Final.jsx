@@ -31,19 +31,28 @@ const Final = ( {correctCount ,incorrectCount, inTime, minutesOutput ,secondsOut
 
      
     return(
-        <div className="final-container">
-            Final.jsx
+        <div className="final-container container fs-3 d-flex justify-content-evenly gap-1">
             
-            <span>Raw WPM:{rawWPM}</span><br />
-            <span>Clear WPM: {clearWPM}</span><br />
+           
+            <div className="d-flex flex-column">
+
+                {inTime ? <span>You Finished in {minutesOutput} : {secondsOutput}</span> : <span>You Did Not Make It In Time</span>}
+                <span>Raw WPM :{rawWPM}</span>
+                <span>Clear WPM :{clearWPM}</span>
+
+            </div>
+
+            <div className="d-flex flex-column">
+
+
+                <span>Total Word Count : {totalWords}</span>
+                <span>Correct Word Count: {correctCount}</span>
+                <span>Incorrect Word Count :{incorrectCount}</span>
+
+            </div>
+ 
+
             
-
-            <span>Total Word Count : {totalWords}</span><br />
-            <span>Correct Word Count: {correctCount}</span><br />
-            <span>Incorrect Word Count :{incorrectCount}</span><br />
-
-            {inTime ? <span>You Finished in {minutesOutput} : {secondsOutput}</span> : <span>You Did Not Make It In Time</span>}<br />
-
         </div>
     );
 
