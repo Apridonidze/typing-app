@@ -55,15 +55,15 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                   
                     letterRef.current[lastIndex].classList.add('text-success')
                      
-                    inputRef.current.classList.add('bg-success');
+                    inputRef.current.classList.add('bg-success' , 'border-dark' , 'text-white');
 
                 }else {
                     
                     letterRef.current[lastIndex].classList.add('text-danger' , 'bg-warning')
                      
                      
-                    inputRef.current.classList.remove('bg-success');
-                    inputRef.current.classList.add('bg-warning');
+                    inputRef.current.classList.remove('bg-success' , 'border-dark' , 'text-white');
+                    inputRef.current.classList.add('bg-warning' , 'border-dark' , 'text-dark');
                     
                 }
                 

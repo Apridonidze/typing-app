@@ -63,15 +63,16 @@ const App = () => {
   const deviceType = isMobile ? 'Mobile' : (isTablet ? 'Tablet' : 'Desktop');
 
   
-  const darkTheme = {theme : 'dark theme',backgroundColor: 'black', color : 'white'}
-  const lightTheme = {theme : 'light theme',backgroundColor : 'white', color: 'black'}
-  const devTheme = {theme : 'dev theme',backgroundColor : '#1b2028', color : '#23a9d5'}
-  const matrixTheme = {theme : 'matrix theme',backgroundColor : '#000000 ', color : '#15ff00'}
-  const vsCodeTheme = {theme : 'vsCode theme',backgroundColor: '#1e1e1e', color : 'white'}
-  const creamsicle = {theme : 'creamSicle theme',backgroundColor: '#ff9869' , color : 'white'}
+  const darkTheme = {theme : 'Dark Theme',backgroundColor: 'black', color : 'white'}
+  const lightTheme = {theme : 'Light Theme',backgroundColor : 'white', color: 'black'}
+  const devTheme = {theme : 'Dev Theme',backgroundColor : '#1b2028', color : '#23a9d5'}
+  const matrixTheme = {theme : 'Matrix Theme',backgroundColor : '#000000 ', color : '#15ff00'}
+  const vsCodeTheme = {theme : 'VsCode Theme',backgroundColor: '#1e1e1e', color : 'white'}
+  const creamsicle = {theme : 'CreamSicle Theme',backgroundColor: '#ff9869' , color : 'white'}
   
   
   const [theme,setTheme] = useState(null)
+  const [themeTxt,setThemeTxt] = useState('')
   const themes = [darkTheme, lightTheme,devTheme,matrixTheme,vsCodeTheme,creamsicle]
 
 
@@ -82,11 +83,6 @@ const App = () => {
 
   },[deviceType])
 
-  useEffect(() => {
-
-    setTheme(theme)
-
-  },[])
     
 
   const handleGameLength = (e) => {
@@ -137,9 +133,12 @@ const App = () => {
   const handleThemeButtons = (themeObj) => {
 
     const targetThemeObj = {backgroundColor : themeObj.backgroundColor, color: themeObj.color}
+    const themeName = {theme : themeObj.theme}
     setTheme(theme => theme = targetThemeObj)
+    setThemeTxt(themeTxt => themeTxt = themeName)
 
   }
+
 
   const handleTargetButton = () => {
 
@@ -185,7 +184,7 @@ const App = () => {
       
       }
       
-        <Footer handleThemeButtons={handleThemeButtons} setTheme={setTheme} themes={themes} theme={theme} />
+        <Footer handleThemeButtons={handleThemeButtons} setTheme={setTheme} themes={themes} theme={theme} themeTxt={themeTxt}/>
       
       </> 
       
