@@ -62,3 +62,9 @@ i {
 .inserted-container span {
     border: none;
 }
+
+
+.theme-btn:hover{
+  border-bottom: 1px solid ;
+  cursor: pointer;
+}

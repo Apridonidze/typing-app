@@ -72,8 +72,8 @@ const App = () => {
   const creamsicle = {theme : 'CreamSicle Theme',backgroundColor: '#ff9869' , color : 'white'}
   
   
-  const [theme,setTheme] = useState(null)
-  const [themeTxt,setThemeTxt] = useState('')
+  const [theme,setTheme] = useState(devTheme)
+  const [themeTxt,setThemeTxt] = useState(devTheme)
   const [toggleTheme, setToggleTheme] = useState(false)
   const themes = [darkTheme, lightTheme,devTheme,matrixTheme,vsCodeTheme,creamsicle]
 
@@ -135,6 +135,7 @@ const App = () => {
 
     const targetThemeObj = {backgroundColor : themeObj.backgroundColor, color: themeObj.color}
     const themeName = {theme : themeObj.theme}
+
     setTheme(theme => theme = targetThemeObj)
     setThemeTxt(themeTxt => themeTxt = themeName)
 
