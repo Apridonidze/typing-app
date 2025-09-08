@@ -16,7 +16,6 @@ import { useEffect, useRef, useState } from "react";
 const App = () => {
 
 
-  //TODO : change incorrect letters background to target background color , change left letters color 
   //TODO : add custom text size for preferences in theme
   //TODO : finish theme component styling
  
@@ -77,7 +76,8 @@ const App = () => {
 
   },[deviceType])
 
-    console.log(toggleTheme)
+
+    
 
   const handleGameLength = (e) => {
   
@@ -87,7 +87,9 @@ const App = () => {
     if(e) {
       const value = e;
 
-      setGameLength(value || 25)
+      
+      localStorage.setItem('game-length', value)
+      
 
          axios
          .get(API_URL)
@@ -95,7 +97,7 @@ const App = () => {
           
           const data = resp.data
           const shuffledArray = [...data].sort(() => Math.random() - 0.5);
-          const slicedArray = shuffledArray.slice(0, value)
+          const slicedArray = shuffledArray.slice(0, localStorage.getItem('game-length'))
           
           setWords(slicedArray)
           setIsWordFetched(true)

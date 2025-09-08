@@ -6,8 +6,6 @@ import Wrapper from "./Wrapper";
 
 const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , inserted , setIncorrectCount, setIsGameStarted, isGameStarted, isWordsFetched, isFocused , input, setInput, setTarget, target, correctCount,incorrectCount, theme} ) => {
 
-    const inputRef = useRef(null)
-
     const wordRef = useRef([])
     const letterRef = useRef([])
 
@@ -23,7 +21,6 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
     useEffect(() => {
         
         setTargetWord(targetWord => [...targetWord ,wordRef.current[target].textContent][targetWord.length])
-        
         
         if(wordRef.current || letterRef.current){
 
@@ -56,7 +53,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                      
                 }else {
                     
-                    letterRef.current[lastIndex].classList.add('text-danger' , 'bg-warning')
+                    letterRef.current[lastIndex].classList.add('text-danger' , `bg-${localStorage.getItem('background-theme')}`)
                      
                      
                    

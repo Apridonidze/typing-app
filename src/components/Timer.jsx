@@ -3,7 +3,6 @@ import { useEffect } from "react"
 
 const Timer = ( { seconds ,setSeconds ,minutes ,setMinutes, secondsOutput, setsecondsOutput, minutesOutput,setMinutesOutput ,setInTime, isGameStarted, isGameFinished } ) => {
 
-
     
      useEffect(() => {
 
