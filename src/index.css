@@ -68,3 +68,7 @@ i {
   border-bottom: 1px solid ;
   cursor: pointer;
 }
+.theme-buttons-container {
+  overflow-y: auto;
+  height: 500px;
+}

@@ -9,7 +9,7 @@ const ThemeButtons = ( { handleThemeButtons } ) => {
     
 
     return(
-        <div className="theme-buttons-container container d-flex flex-column gap-3">
+        <div className="theme-buttons-container container d-flex flex-column gap-3 h-400px ">
             
             <button style={{background : darkTheme.backgroundColor,color : darkTheme.color}} className="dark-theme-btn btn btn-md border border-1" onClick={() => handleThemeButtons(darkTheme)}>{darkTheme.theme}</button>
             <button style={{background : lightTheme.backgroundColor,color : lightTheme.color}} className="light-theme-btn btn btn-md border border-1 border-dark" onClick={() => handleThemeButtons(lightTheme)}>{lightTheme.theme}</button>
