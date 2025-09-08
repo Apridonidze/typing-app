@@ -9,9 +9,9 @@ const ThemeButtons = ( { handleThemeButtons } ) => {
     
 
     return(
-        <div className="theme-buttons-container container d-flex flex-column gap-3 h-400px ">
+        <div className="theme-buttons-container container d-flex flex-column gap-3  ">
             
-            <button style={{background : darkTheme.backgroundColor,color : darkTheme.color}} className="dark-theme-btn btn btn-md border border-1" onClick={() => handleThemeButtons(darkTheme)}>{darkTheme.theme}</button>
+            <button style={{background : darkTheme.backgroundColor,color : darkTheme.color}} className="dark-theme-btn btn btn-md border border-1 w-100px" onClick={() => handleThemeButtons(darkTheme)}>{darkTheme.theme}</button>
             <button style={{background : lightTheme.backgroundColor,color : lightTheme.color}} className="light-theme-btn btn btn-md border border-1 border-dark" onClick={() => handleThemeButtons(lightTheme)}>{lightTheme.theme}</button>
             <button style={{background : devTheme.backgroundColor,color : devTheme.color}} className="dev-theme-btn btn btn-md border border-1 border-info" onClick={() => handleThemeButtons(devTheme)}>{devTheme.theme}</button>
             <button style={{background : matrixTheme.backgroundColor,color : matrixTheme.color , border: '1px solid #15ff00'}} className="matrix-theme-btn btn btn-md" onClick={() => handleThemeButtons(matrixTheme)}>{matrixTheme.theme}</button>

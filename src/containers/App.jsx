@@ -16,6 +16,8 @@ import { useEffect, useRef, useState } from "react";
 const App = () => {
 
 
+  //TODO : change incorrect letters background to target background color , change left letters color 
+  //TODO : change redo button styling
   //TODO : add custom text size for preferences in theme
   //TODO : finish theme component styling
  

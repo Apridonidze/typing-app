@@ -2,7 +2,6 @@ import { useRef,useEffect,useState } from "react";
 
 import Focused from "../components/Focused";
 import Wrapper from "./Wrapper";
-import Redo from '../components/Redo'
 
 
 const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , inserted , setIncorrectCount, setIsGameStarted, isGameStarted, isWordsFetched, isFocused , input, setInput, setTarget, target, correctCount,incorrectCount, theme} ) => {
@@ -55,16 +54,12 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                   
                     letterRef.current[lastIndex].classList.add('text-success')
                      
-                    inputRef.current.classList.add('bg-success' , 'border-dark' , 'text-white');
-
                 }else {
                     
                     letterRef.current[lastIndex].classList.add('text-danger' , 'bg-warning')
                      
                      
-                    inputRef.current.classList.remove('bg-success' , 'border-dark' , 'text-white');
-                    inputRef.current.classList.add('bg-warning' , 'border-dark' , 'text-dark');
-                    
+                   
                 }
                 
                 
@@ -100,10 +95,9 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                if(input.length < 1) return;
                
 
-                if(input.join('') == correctWord){ setCorrectCount(correctCount => correctCount + 1); inputRef.current.classList.remove('bg-warning');inputRef.current.classList.add('bg-success');
-                }
-                else {setIncorrectCount(incorrectCount => incorrectCount + 1);inputRef.current.classList.remove('bg-success');inputRef.current.classList.add('bg-warning');
-                }
+                if(input.join('') == correctWord) setCorrectCount(correctCount => correctCount + 1)
+                else setIncorrectCount(incorrectCount => incorrectCount + 1)
+                
 
                 if(input.length < correctWord.length){
 
@@ -146,8 +140,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                     
 
                     setInput([])
-                    inputRef.current.classList.remove('bg-warning', 'bg-success'); 
-
+                
                     setTarget(target => target + 1)
                     
                     setInserted(inserted => [...inserted , typedLetters])
@@ -240,7 +233,6 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
 
             <Wrapper words={words} wordRef={wordRef} inserted={inserted} input={input} letterRef={letterRef} targetLetter={targetLetter} handleRedo={handleRedo} isFocused={isFocused} insertedRef={insertedRef} insertedLetterRef={insertedLetterRef} />
 
-            <Redo handleRedo={handleRedo} input={input} inputRef={inputRef} theme={theme}/>
         </div>
     );
 };
