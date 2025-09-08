@@ -36,18 +36,18 @@ const Final = ( {correctCount ,incorrectCount, inTime, minutesOutput ,secondsOut
            
             <div className="d-flex flex-column">
 
-                {inTime ? <span>You Finished in {minutesOutput} : {secondsOutput}</span> : <span>You Did Not Make It In Time</span>}
-                <span>Raw WPM :{rawWPM}</span>
-                <span>Clear WPM :{clearWPM}</span>
+                {inTime ? <span>You Finished in <span className="text-decoration-underline">{minutesOutput} : {secondsOutput} </span></span> : <span>You Did Not Make It In Time</span>}
+                <span>Raw WPM : <span className="text-decoration-underline">{rawWPM}</span></span>
+                <span>Clear WPM : <span className="text-decoration-underline">{clearWPM}</span></span>
 
             </div>
 
             <div className="d-flex flex-column">
 
 
-                <span>Total Word Count : {totalWords}</span>
-                <span>Correct Word Count: {correctCount}</span>
-                <span>Incorrect Word Count :{incorrectCount}</span>
+                <span>Total Word Count : <span className="text-decoration-underline">{totalWords}</span></span>
+                <span>Correct Word Count: <span className="text-decoration-underline">{correctCount}</span></span>
+                <span>Incorrect Word Count : <span className="text-decoration-underline">{incorrectCount}</span></span>
 
             </div>
  

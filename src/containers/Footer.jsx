@@ -11,6 +11,7 @@ const Footer = ({theme,themeTxt,setToggleTheme}) => {
             <span>Press Tab + Enter To Refresh</span>
 
             <div className="py-2">
+                
                 <span className="theme-btn fs-6 py-2 my-2" onClick={() => setToggleTheme(toggleTheme => toggleTheme = !toggleTheme)}><i class="fa-solid fa-palette"></i> {themeTxt.theme}</span>
             
             </div>

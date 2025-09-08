@@ -17,7 +17,6 @@ const App = () => {
 
 
   //TODO : change incorrect letters background to target background color , change left letters color 
-  //TODO : change redo button styling
   //TODO : add custom text size for preferences in theme
   //TODO : finish theme component styling
  
@@ -66,20 +65,11 @@ const App = () => {
   const deviceType = isMobile ? 'Mobile' : (isTablet ? 'Tablet' : 'Desktop');
 
   
-  const darkTheme = {theme : 'Dark Theme',backgroundColor: 'black', color : 'white'}
-  const lightTheme = {theme : 'Light Theme',backgroundColor : 'white', color: 'black'}
-  const devTheme = {theme : 'Dev Theme',backgroundColor : '#1b2028', color : '#23a9d5'}
-  const matrixTheme = {theme : 'Matrix Theme',backgroundColor : '#000000 ', color : '#15ff00'}
-  const vsCodeTheme = {theme : 'VsCode Theme',backgroundColor: '#1e1e1e', color : 'white'}
-  const creamsicle = {theme : 'CreamSicle Theme',backgroundColor: '#ff9869' , color : 'white'}
   
   
-  
-  const [theme,setTheme] = useState(devTheme)
-  const [themeTxt,setThemeTxt] = useState(devTheme)
+  const [theme,setTheme] = useState(' ')
+  const [themeTxt,setThemeTxt] = useState(' ')
   const [toggleTheme, setToggleTheme] = useState(false)
-  const themes = [darkTheme, lightTheme,devTheme,matrixTheme,vsCodeTheme,creamsicle]
-
 
   useEffect(() => {
 
@@ -142,7 +132,23 @@ const App = () => {
     setTheme(theme => theme = targetThemeObj)
     setThemeTxt(themeTxt => themeTxt = themeName)
 
+    if(theme && themeName) {
+      
+    localStorage.setItem('background-theme', targetThemeObj.backgroundColor)
+    localStorage.setItem('color-theme', targetThemeObj.color)
+    localStorage.setItem('text-theme', themeName.theme)
+
+    }
+
+
+
   }
+
+  useEffect(() => {
+
+    handleThemeButtons
+
+  },[theme])
 
 
   const handleTargetButton = () => {
@@ -170,15 +176,14 @@ const App = () => {
 
   
 
-
   return(
-    <div style={theme} className="app-container container-fluid min-vh-100 d-flex flex-column justify-content-between gap-5 " >
+    <div style={{backgroundColor : localStorage.getItem('background-theme') , color : localStorage.getItem('color-theme')}}  className="app-container container-fluid min-vh-100 d-flex flex-column justify-content-between gap-5 " >
       
       {supportedDevice ? 
       
         <>
          
-         {toggleTheme ? <Theme handleThemeButtons={handleThemeButtons} setTheme={setTheme} theme={theme} themes={themes}/> : 
+         {toggleTheme ? <Theme handleThemeButtons={handleThemeButtons} setTheme={setTheme} theme={theme} /> : 
          
          
          <>
@@ -200,7 +205,7 @@ const App = () => {
       }
       
       
-        <Footer handleThemeButtons={handleThemeButtons} setTheme={setTheme} themes={themes} theme={theme} themeTxt={themeTxt} setToggleTheme={setToggleTheme} toggleTheme={toggleTheme}/>
+        <Footer handleThemeButtons={handleThemeButtons} setTheme={setTheme}  theme={theme} themeTxt={themeTxt} setToggleTheme={setToggleTheme} toggleTheme={toggleTheme}/>
       
       </> 
       

@@ -1,7 +1,7 @@
 
-const RefreshBtn = ( {theme}) => {
+const RefreshBtn = ( ) => {
     return (
-        <button style={theme} className="btn p-2" onClick={() => window.location.reload() } tabIndex='0' role="button"><i className="fa-solid fa-rotate-right"></i></button>
+        <button style={{color : localStorage.getItem('color-theme')}} className="btn p-2" onClick={() => window.location.reload() } tabIndex='0' role="button"><i className="fa-solid fa-rotate-right"></i></button>
     )
 }
 
