@@ -9,7 +9,7 @@ const Theme = ({ handleThemeButtons, handleTextSize }) => {
 
            <ThemeButtons handleThemeButtons={handleThemeButtons} />
 
-           <TextSize handleTextSize={handleTextSize}/>
+           <TextSize handleTextSize={handleTextSize} />
 
         </div>
     )

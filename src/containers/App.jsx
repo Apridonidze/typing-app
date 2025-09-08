@@ -64,7 +64,7 @@ const App = () => {
   const deviceType = isMobile ? 'Mobile' : (isTablet ? 'Tablet' : 'Desktop');
 
   
-  
+  const [fontSize, setFontSize] = useState(' ');
   
   const [theme,setTheme] = useState(' ')
   const [themeTxt,setThemeTxt] = useState(' ')
@@ -128,7 +128,10 @@ const App = () => {
 
   const handleTextSize = (textSize) => {
 
-    console.log(textSize)
+    setFontSize(fontSize => fontSize= textSize)
+
+
+    console.log(fontSize)
 
   }
 
@@ -150,8 +153,6 @@ const App = () => {
 
     }
 
-
-
   }
 
   useEffect(() => {
@@ -159,7 +160,7 @@ const App = () => {
     handleThemeButtons
     handleTextSize
 
-  },[theme])
+  },[theme,])
 
 
   const handleTargetButton = () => {

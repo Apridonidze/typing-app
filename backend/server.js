@@ -1,8 +1,8 @@
 require('dotenv').config()
 
+const path = require('path')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const path = require('path')
 
 
 const express = require('express')
@@ -24,8 +24,6 @@ app.get('/words', (req,res) => {
     const pathFile = path.join(__dirname,'words.json')
     res.sendFile(pathFile)
 })
-
-
 
 
 app.listen(PORT, () => {
