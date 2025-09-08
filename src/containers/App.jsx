@@ -138,6 +138,8 @@ const App = () => {
     localStorage.setItem('color-theme', targetThemeObj.color)
     localStorage.setItem('text-theme', themeName.theme)
 
+    
+
     }
 
 
