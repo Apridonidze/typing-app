@@ -16,8 +16,7 @@ import { useEffect, useRef, useState } from "react";
 const App = () => {
 
 
-  //TODO : add custom text size for preferences in theme
-  //TODO : finish theme component styling
+  //TODO : fix text size preferences 
  
   //TODO : add contact in Footer : GitHub, Linkedin, Gmail
   //TODO : add version description if Footer (create component that appends when desc button is clicked)
@@ -128,10 +127,13 @@ const App = () => {
 
   const handleTextSize = (textSize) => {
 
+
     setFontSize(fontSize => fontSize= textSize)
 
+    localStorage.setItem('text-size', textSize)
 
-    console.log(fontSize)
+
+
 
   }
 
@@ -160,7 +162,9 @@ const App = () => {
     handleThemeButtons
     handleTextSize
 
-  },[theme,])
+  },[theme,fontSize])
+
+
 
 
   const handleTargetButton = () => {
@@ -204,7 +208,7 @@ const App = () => {
       
           {!isGameFinished ? 
       
-            <Main words={words} setIsGameFinished={setIsGameFinished} setCorrectCount={setCorrectCount} setInserted={setInserted} correctCount={correctCount} inserted={inserted} setIncorrectCount={setIncorrectCount} incorrectCount={incorrectCount} setIsGameStarted={setIsGameStarted} isFocused={isFocused} setIsFocused={setIsFocused} isWordsFetched={isWordsFetched} divRef={divRef} input={input} setInput={setInput} setTarget={setTarget} target={target} theme={theme}/> 
+            <Main words={words} setIsGameFinished={setIsGameFinished} setCorrectCount={setCorrectCount} setInserted={setInserted} correctCount={correctCount} inserted={inserted} setIncorrectCount={setIncorrectCount} incorrectCount={incorrectCount} setIsGameStarted={setIsGameStarted} isFocused={isFocused} setIsFocused={setIsFocused} isWordsFetched={isWordsFetched} divRef={divRef} input={input} setInput={setInput} setTarget={setTarget} target={target} theme={theme} fontSize={fontSize}/> 
       
           :
       

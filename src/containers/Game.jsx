@@ -4,7 +4,7 @@ import Focused from "../components/Focused";
 import Wrapper from "./Wrapper";
 
 
-const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , inserted , setIncorrectCount, setIsGameStarted, isGameStarted, isWordsFetched, isFocused , input, setInput, setTarget, target, correctCount,incorrectCount, theme} ) => {
+const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , inserted , setIncorrectCount, setIsGameStarted, isGameStarted, isWordsFetched, isFocused , input, setInput, setTarget, target, fontSize} ) => {
 
     const wordRef = useRef([])
     const letterRef = useRef([])
@@ -228,7 +228,7 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
             
             <Focused isFocused={isFocused}/>
 
-            <Wrapper words={words} wordRef={wordRef} inserted={inserted} input={input} letterRef={letterRef} targetLetter={targetLetter} handleRedo={handleRedo} isFocused={isFocused} insertedRef={insertedRef} insertedLetterRef={insertedLetterRef} />
+            <Wrapper words={words} wordRef={wordRef} inserted={inserted} input={input} letterRef={letterRef} targetLetter={targetLetter} handleRedo={handleRedo} isFocused={isFocused} insertedRef={insertedRef} insertedLetterRef={insertedLetterRef} fontSize={fontSize}/>
 
         </div>
     );
