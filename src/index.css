@@ -63,7 +63,6 @@ i {
     border: none;
 }
 
-
 .theme-btn:hover{
   border-bottom: 1px solid ;
   cursor: pointer;
@@ -71,4 +70,10 @@ i {
 .theme-buttons-container {
   overflow-y: auto;
   height: 500px;
+}
+
+
+.theme-container {
+   scrollbar-color: black white; /* thumb-color track-color */
+   scrollbar-width: thin;
 }

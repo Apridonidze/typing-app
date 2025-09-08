@@ -5,13 +5,10 @@ const Theme = ({ handleThemeButtons, handleTextSize }) => {
     
 
     return(
-        <div className="theme-container container d-flex flex-column text-center">
-
-            <span className="fs-1 py-3" >Choose your Theme...</span>
+        <div className="theme-container container d-block text-center overflow-auto" style={{height : '600px'}}>
 
            <ThemeButtons handleThemeButtons={handleThemeButtons} />
 
-           <span className="fs-1 py-3" >Choose your Font Size...</span>
            <TextSize handleTextSize={handleTextSize}/>
 
         </div>

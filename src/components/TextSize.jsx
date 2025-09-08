@@ -1,6 +1,9 @@
 const TextSize = ({handleTextSize}) => {
     return(
         <div className="textsize-container container d-flex flex-column gap-3 justify-content-start align-items-center ">
+
+            
+           <span className="fs-1 py-3" >Choose your Font Size...</span>
             
             <button className="btn border border-2 w-25 fs-1" style={{color : localStorage.getItem('color-theme')}} onClick={() => handleTextSize('fs-1')}>Font-Size 1</button>
             <button className="btn border border-2 w-25 fs-2" style={{color : localStorage.getItem('color-theme')}} onClick={() => handleTextSize('fs-2')}>Font-Size 2</button>
