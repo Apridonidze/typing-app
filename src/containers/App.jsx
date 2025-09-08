@@ -126,16 +126,17 @@ const App = () => {
   }
 
   const handleTextSize = (textSize) => {
-
-
+    
     setFontSize(fontSize => fontSize= textSize)
 
-    localStorage.setItem('text-size', textSize)
-
-
-
+     if(textSize && fontSize){
+      
+      localStorage.setItem('text-size', textSize)
 
   }
+    
+  }
+  
 
   const handleThemeButtons = (themeObj) => {
 
@@ -149,9 +150,7 @@ const App = () => {
       
     localStorage.setItem('background-theme', targetThemeObj.backgroundColor)
     localStorage.setItem('color-theme', targetThemeObj.color)
-    localStorage.setItem('text-theme', themeName.theme)
-
-    
+    localStorage.setItem('text-theme', themeName.theme)    
 
     }
 
@@ -193,7 +192,7 @@ const App = () => {
   
 
   return(
-    <div style={{backgroundColor : localStorage.getItem('background-theme') , color : localStorage.getItem('color-theme')}}  className="app-container container-fluid min-vh-100 d-flex flex-column justify-content-between gap-5 " >
+    <div style={{backgroundColor : localStorage.getItem('background-theme') , color : localStorage.getItem('color-theme')}}  className="app-container container-fluid d-flex flex-column " >
       
       {supportedDevice ? 
       

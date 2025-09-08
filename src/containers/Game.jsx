@@ -53,7 +53,8 @@ const Game = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
                      
                 }else {
                     
-                    letterRef.current[lastIndex].classList.add('text-danger' , `bg-${localStorage.getItem('background-theme')}`)
+                    if(localStorage.getItem('background-theme'))letterRef.current[lastIndex].classList.add('text-danger' , `bg-${localStorage.getItem('background-theme')}`)
+                    else letterRef.current[lastIndex].classList.add('text-danger' , 'bg-warning')
                      
                      
                    

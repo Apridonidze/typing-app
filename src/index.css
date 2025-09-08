@@ -74,6 +74,6 @@ i {
 
 
 .theme-container {
-   scrollbar-color: black white; /* thumb-color track-color */
+   scrollbar-color: black white;
    scrollbar-width: thin;
 }
