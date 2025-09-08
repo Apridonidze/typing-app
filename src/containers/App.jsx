@@ -6,7 +6,7 @@ import Final from "./Final";
 import Header from "./Header";
 import Footer from "./Footer";
 
-import Theme from "../components/Theme";
+import Theme from "./Theme";
 import Unsupported from "../components/Unsupported";
 
 
