@@ -1,4 +1,5 @@
 import ThemeButtons from "../components/ThemeButtons"
+import TextSize from "../components/TextSize"
 
 const Theme = ({ handleThemeButtons }) => {
     
@@ -9,6 +10,7 @@ const Theme = ({ handleThemeButtons }) => {
             <span className="fs-1 mt-2 py-4" >Choose your Theme...</span>
 
            <ThemeButtons handleThemeButtons={handleThemeButtons} />
+           <TextSize />
 
         </div>
     )
