@@ -126,6 +126,12 @@ const App = () => {
 
   }
 
+  const handleTextSize = (textSize) => {
+
+    console.log(textSize)
+
+  }
+
   const handleThemeButtons = (themeObj) => {
 
     const targetThemeObj = {backgroundColor : themeObj.backgroundColor, color: themeObj.color}
@@ -151,6 +157,7 @@ const App = () => {
   useEffect(() => {
 
     handleThemeButtons
+    handleTextSize
 
   },[theme])
 
@@ -187,7 +194,7 @@ const App = () => {
       
         <>
          
-         {toggleTheme ? <Theme handleThemeButtons={handleThemeButtons} setTheme={setTheme} theme={theme} /> : 
+         {toggleTheme ? <Theme handleThemeButtons={handleThemeButtons} setTheme={setTheme} theme={theme} handleTextSize={handleTextSize} /> : 
          
          
          <>

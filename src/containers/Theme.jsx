@@ -1,16 +1,18 @@
 import ThemeButtons from "../components/ThemeButtons"
 import TextSize from "../components/TextSize"
 
-const Theme = ({ handleThemeButtons }) => {
+const Theme = ({ handleThemeButtons, handleTextSize }) => {
     
 
     return(
-        <div className="theme-container container d-flex flex-column text-center gap-2">
+        <div className="theme-container container d-flex flex-column text-center">
 
-            <span className="fs-1 mt-2 py-4" >Choose your Theme...</span>
+            <span className="fs-1 py-3" >Choose your Theme...</span>
 
            <ThemeButtons handleThemeButtons={handleThemeButtons} />
-           <TextSize />
+
+           <span className="fs-1 py-3" >Choose your Font Size...</span>
+           <TextSize handleTextSize={handleTextSize}/>
 
         </div>
     )
