@@ -197,7 +197,7 @@ const App = () => {
       
         <>
          
-         {toggleTheme ? <Theme handleThemeButtons={handleThemeButtons} setTheme={setTheme} theme={theme} handleTextSize={handleTextSize} /> : 
+         {toggleTheme ? <Theme handleThemeButtons={handleThemeButtons} setTheme={setTheme} theme={theme} handleTextSize={handleTextSize} /> : toggleVersions ?  <Versions /> :
          
          
          <>
@@ -218,7 +218,6 @@ const App = () => {
       
       }
       
-      {toggleVersions ? <Versions /> : <></>}
       
       
         <Footer handleThemeButtons={handleThemeButtons} setTheme={setTheme}  theme={theme} themeTxt={themeTxt} setToggleTheme={setToggleTheme} setToggleVersions={setToggleVersions} toggleTheme={toggleTheme}/>

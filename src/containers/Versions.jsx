@@ -1,7 +1,11 @@
 const Versions = () => {
     return(
-    <div className="versions-container position-absolute start-50 translate-middle  d-flex flex-column container border border-2 rounded-2 w-50 h-auto justify-content-center " style={{backgroundColor: localStorage.getItem('background-theme')}}>
-        <h1>v0.0.0</h1>
+    <div className="versions-container d-flex flex-column container  rounded-2 w-50 h-auto my-5 justify-content-center " style={{backgroundColor: localStorage.getItem('background-theme')}}>
+        
+        <div className="v0.0.0-container">
+            <span className="fs-1">v0.0.0</span>
+        </div>
+
     </div>
     )
 }
