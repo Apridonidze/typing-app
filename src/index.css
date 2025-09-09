@@ -52,19 +52,14 @@
     border: none;
 }
 
-.theme-btn:hover{
-  border-bottom: 1px solid ;
-  cursor: pointer;
-}
-.version-btn:hover {
-   border-bottom: 1px solid ;
-  cursor: pointer;
-}
 .theme-buttons-container {
   overflow-y: auto;
   height: 500px;
 }
-
+.footer-btn:hover{
+  border-bottom: 1px solid ;
+  cursor: pointer;
+}
 
 .theme-container {
    scrollbar-color: black white;

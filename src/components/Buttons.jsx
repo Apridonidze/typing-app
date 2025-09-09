@@ -1,8 +1,7 @@
+
 const buttonValues = [10, 25, 50, 60, 100];
 
-
-
-const Buttons = ( { handleGameLength, btnRef, setTargetButton,theme } ) => {
+const Buttons = ( { handleGameLength, btnRef, setTargetButton } ) => {
     return(
         <div className="buttons-container" >
             {buttonValues.map((button,buttonId) => (
