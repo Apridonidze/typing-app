@@ -15,7 +15,7 @@ const Wrapper = ( { words, wordRef, inserted, input,letterRef, isFocused, insert
             {inserted.map((word,wordId) => (
                 <span className={word.className  + ' me-2'} key={wordId} ref={e => insertedRef.current[wordId] = e}>
                     {word.map((char,charId) => (
-                        <span key={charId} className={char.className} ref={e => insertedLetterRef.current[charId] = e}>{char.text}</span>
+                        <span style={{backgroundColor : localStorage.getItem('background-theme')}} key={charId} className={char.className} ref={e => insertedLetterRef.current[charId] = e}>{char.text}</span>
                     ))}
                 </span>
             ))
@@ -24,7 +24,7 @@ const Wrapper = ( { words, wordRef, inserted, input,letterRef, isFocused, insert
             
             {input.map((letter,letterId) => (
                 
-                <span key={letterId} ref={e => (letterRef.current[letterId] = e)}>{letter}</span>
+                <span style={{backgroundColor : localStorage.getItem('background-theme')}} key={letterId} ref={e => (letterRef.current[letterId] = e)}>{letter}</span>
             
             ))}
         

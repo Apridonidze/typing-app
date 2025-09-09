@@ -76,7 +76,6 @@ const App = () => {
   },[deviceType])
 
 
-    
 
   const handleGameLength = (e) => {
   
@@ -150,7 +149,7 @@ const App = () => {
       
     localStorage.setItem('background-theme', targetThemeObj.backgroundColor)
     localStorage.setItem('color-theme', targetThemeObj.color)
-    localStorage.setItem('text-theme', themeName.theme)    
+    localStorage.setItem('text-theme', themeName.theme)
 
     }
 
