@@ -5,6 +5,7 @@ import Main from "./Main";
 import Final from "./Final";
 import Header from "./Header";
 import Footer from "./Footer";
+import Versions from "./Versions";
 
 import Theme from "./Theme";
 import Unsupported from "../components/Unsupported";
@@ -16,8 +17,6 @@ import { useEffect, useRef, useState } from "react";
 const App = () => {
 
 
-  //TODO : fix text size preferences 
- 
   //TODO : add contact in Footer : GitHub, Linkedin, Gmail
   //TODO : add version description if Footer (create component that appends when desc button is clicked)
   //TODO : add text in Unsupported Component ("in our current version your device is not supported")
@@ -218,6 +217,7 @@ const App = () => {
       
       }
       
+      <Versions />
       
         <Footer handleThemeButtons={handleThemeButtons} setTheme={setTheme}  theme={theme} themeTxt={themeTxt} setToggleTheme={setToggleTheme} toggleTheme={toggleTheme}/>
       
