@@ -191,7 +191,7 @@ const App = () => {
   
 
   return(
-    <div style={{backgroundColor : localStorage.getItem('background-theme') , color : localStorage.getItem('color-theme')}}  className="app-container container-fluid d-flex flex-column " >
+    <div style={{backgroundColor : localStorage.getItem('background-theme') , color : localStorage.getItem('color-theme')}}  className="app-container container-fluid d-flex flex-column justify-content-between min-vh-100" >
       
       {supportedDevice ? 
       

@@ -6,11 +6,11 @@ const Wrapper = ( { words, wordRef, inserted, input,letterRef, isFocused, insert
 
     
     return(
-        <div className={`wrapper-container container h-auto d-flex flex-column ${localStorage.getItem('text-size')}`} style={!isFocused ? {filter : 'blur(5px)'} : {filter : 'blur(0px)'}}>
+        <div className={`wrapper-container container py-1 d-flex flex-column ${localStorage.getItem('text-size')}`} style={!isFocused ? {filter : 'blur(5px)'} : {filter : 'blur(0px)'}}>
             
             <Words words={words} wordRef={wordRef} />
             
-        <div className="line container">
+        <div className="line container h-auto px-4 pt-1">
             
             {inserted.map((word,wordId) => (
                 <span className={word.className  + ' me-2'} key={wordId} ref={e => insertedRef.current[wordId] = e}>
