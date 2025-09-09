@@ -9,6 +9,8 @@ const Footer = ({theme,themeTxt,setToggleTheme, setToggleVersions}) => {
             <RefreshBtn theme={theme}/>
 
             <span>Press Tab + Enter To Refresh</span>
+            <span className="fs-4">Or</span>
+            <span>Press F5</span>
 
             <FooterBtn setToggleTheme={setToggleTheme} setToggleVersions={setToggleVersions}/>
         
