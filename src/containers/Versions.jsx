@@ -8,15 +8,22 @@ const Versions = () => {
             <span className="fs-3 ps-3">Features:</span>
 
             <ul className="ps-5">
-                <li>...add content</li>
+                <li>Simple Typing Game</li>
+                <li>In Game Timer</li>
+                <li>WPM calculator on Final Page</li>
+                <li>5 Different Themes</li>
+                <li>6 Different Font Sizes</li>
             </ul>
 
-             <span className="fs-3 ps-3">Future Updates:</span>
+             <span className="fs-3 ps-3">Future Updates (In v0.0.1):</span>
 
             <ul className="ps-5">
-                <li>...add content</li>
+                <li>Account for users (to track users typing performance)</li>
+                <li>LeaderBoard</li>
+                <li>Text in Different Languages</li>
+                <li>Smoother Typing</li>
+                <li>More Themes</li>
             </ul>
-
 
         </div>
 
