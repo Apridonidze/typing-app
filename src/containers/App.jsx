@@ -17,9 +17,6 @@ import { useEffect, useRef, useState } from "react";
 const App = () => {
 
 
-  //TODO : add version description if Footer (create component that appends when desc button is clicked)
-  //TODO : add text in Unsupported Component ("in our current version your device is not supported")
-  
   //TODO : cleanup code & documentate it
   //TODO : make website SEO optimazed
   //TODO : push to github

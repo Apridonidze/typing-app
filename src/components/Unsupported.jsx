@@ -1,10 +1,10 @@
 const Unsupported = () => {
     return (
-        <div className="unsupported-container">
+        <div className="unsupported-container container d-flex flex-column gap-3 py-5 text-center">
     
-            <span>Unsupported Device...</span>
+            <span className="fs-1">Unsupported Device...</span>
 
-            <span>Current Version Does Not Support Tablet/Mobile Devices</span>
+            <span className="fs-5">Current Version (v0.0.0) Does Not Support Tablet/Mobile Devices</span>
 
         </div>
     )
