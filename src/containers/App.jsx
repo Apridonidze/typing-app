@@ -68,6 +68,8 @@ const App = () => {
   const [themeTxt,setThemeTxt] = useState(' ')
   const [toggleTheme, setToggleTheme] = useState(false)
 
+  const [toggleVersions, setToggleVersions] = useState(false)
+
   useEffect(() => {
 
       {deviceType !== 'Desktop' ? setSupportedDevice(false) : setSupportedDevice(true)}
@@ -217,7 +219,8 @@ const App = () => {
       
       }
       
-      <Versions />
+      {toggleVersions ? <Versions /> : <></>}
+      
       
         <Footer handleThemeButtons={handleThemeButtons} setTheme={setTheme}  theme={theme} themeTxt={themeTxt} setToggleTheme={setToggleTheme} toggleTheme={toggleTheme}/>
       
