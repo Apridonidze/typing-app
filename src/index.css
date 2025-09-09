@@ -70,3 +70,6 @@
    scrollbar-color: black white;
    scrollbar-width: thin;
 }
+.versions-container{
+  top: 25%;
+}
