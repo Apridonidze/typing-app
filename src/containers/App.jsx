@@ -222,7 +222,7 @@ const App = () => {
       {toggleVersions ? <Versions /> : <></>}
       
       
-        <Footer handleThemeButtons={handleThemeButtons} setTheme={setTheme}  theme={theme} themeTxt={themeTxt} setToggleTheme={setToggleTheme} toggleTheme={toggleTheme}/>
+        <Footer handleThemeButtons={handleThemeButtons} setTheme={setTheme}  theme={theme} themeTxt={themeTxt} setToggleTheme={setToggleTheme} setToggleVersions={setToggleVersions} toggleTheme={toggleTheme}/>
       
       </> 
       

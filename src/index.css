@@ -48,16 +48,16 @@
   height: 100%;
 }
 
-i {
-    cursor: pointer;
-}
-
 .inserted-container span {
     border: none;
 }
 
 .theme-btn:hover{
   border-bottom: 1px solid ;
+  cursor: pointer;
+}
+.version-btn:hover {
+   border-bottom: 1px solid ;
   cursor: pointer;
 }
 .theme-buttons-container {
