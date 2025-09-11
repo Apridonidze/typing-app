@@ -1,12 +1,51 @@
-# React + Vite
+typing app is simple typing game with custom themes and font size that are saved locally so you wont need to change it everytime you visit or refresh app.you can also see current versions features and future updates for next versions of app.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+used technologies : React, Bootstrap, NodeJs.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+Apps Skeleton : 
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Typing-App/
+│
+├─ backend/
+│   ├─ .env
+│   ├─ package-lock.json
+│   ├─ package.json
+│   ├─ server.js
+│   └─ words.json
+│
+├─ src/
+│   ├─ assets/
+│   │   └─ img/react.svg
+│   ├─ components/
+│   │   ├─ Buttons.jsx
+│   │   ├─ Controls.jsx
+│   │   ├─ Focused.jsx
+│   │   ├─ FooterBtn.jsx
+│   │   ├─ RefreshBtn.jsx
+│   │   ├─ TextSize.jsx
+│   │   ├─ ThemeButtons.jsx
+│   │   ├─ Timer.jsx
+│   │   ├─ Unsupported.jsx
+│   │   └─ Words.jsx
+│   ├─ containers/
+│   │   ├─ App.jsx
+│   │   ├─ Final.jsx
+│   │   ├─ Footer.jsx
+│   │   ├─ Game.jsx
+│   │   ├─ Header.jsx
+│   │   ├─ Main.jsx
+│   │   ├─ Theme.jsx
+│   │   ├─ Versions.jsx
+│   │   └─ Wrapper.jsx
+│   ├─ index.css
+│   ├─ main.jsx
+│   └─ index.html
+│
+├─ .gitignore
+├─ eslint.config.js
+├─ package.json
+├─ package-lock.json
+├─ README.md
+└─ vite.config.js
