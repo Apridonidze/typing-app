@@ -1,36 +1,27 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"; //importing hooks
 
 const Final = ( {correctCount ,incorrectCount, inTime, minutesOutput ,secondsOutput, minutes,seconds} ) => {
 
-    const totalWords = incorrectCount + correctCount
-
-    const [rawWPM, setRawWPM] = useState(0)
-    const [clearWPM, setClearWPM] = useState(0)
+    const totalWords = incorrectCount + correctCount; //counts total words
     
+    const [rawWPM, setRawWPM] = useState(0); //state for rawWPM
+    const [clearWPM, setClearWPM] = useState(0); //state for clearWPM
     
-    
-    
-    const rawWPMCalculator = () => {
-
-        const secondsInMinutes = seconds / 60
-        const totalTimeinMinute = minutes + secondsInMinutes
-    
-        setRawWPM(Math.floor(totalWords / totalTimeinMinute))
-        setClearWPM(Math.floor(correctCount / totalTimeinMinute))
-
-        }
-   
-
     useEffect(() => {
 
+        const totalWords = incorrectCount + correctCount; //counts total words
         
-        
-        rawWPMCalculator()
+        const secondsInMinutes = seconds / 60; //transforms seconds in minutes
+        const totalTimeinMinute = minutes + secondsInMinutes; //transforms whole time in minutes
 
-    },[minutes, seconds, totalWords, correctCount])
+        setRawWPM(rawWPM => rawWPM = Math.floor(totalWords / totalTimeinMinute)); //calculates and sets raw WPM in setRawWPM state
+        setClearWPM(clearWPM => clearWPM = Math.floor(correctCount / totalTimeinMinute));//calculates and sets clear WPM in setClearWPM state
+
+    },[]);//wpm is calculated once component is rendered
 
      
     return(
+
         <div className="final-container container fs-3 d-flex justify-content-evenly gap-1">
             
            
@@ -51,12 +42,11 @@ const Final = ( {correctCount ,incorrectCount, inTime, minutesOutput ,secondsOut
 
             </div>
  
-
-            
         </div>
+
     );
 
-};
+}; //component returns : if user finished typing in time , Raw WPM && Clear WPM , Total Word Count , Correct Word Count and InCorrect Word Count
 
 
-export default Final
+export default Final; //exporting component

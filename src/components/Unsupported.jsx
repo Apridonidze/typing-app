@@ -7,8 +7,8 @@ const Unsupported = () => {
             <span className="fs-5">Current Version (v0.0.0) Does Not Support Tablet/Mobile Devices</span>
 
         </div>
-    )
-}
+    );
+}; //returns text that current version doesnot support unsupported devices (tablets/mobiles)
 
 
-export default Unsupported
+export default Unsupported; //exporting component

@@ -1,9 +1,12 @@
-import Timer from "../components/Timer";
-import Buttons from "../components/Buttons";
+import Timer from "../components/Timer"; //importing component from ./components
+import Buttons from "../components/Buttons"; //importing component from ./components
 
 const Header = ( {  handleGameLength, isGameStarted,isGameFinished,seconds,setSeconds,minutes,setMinutes,secondsOutput,setsecondsOutput,minutesOutput,setMinutesOutput,inTime,setInTime, btnRef, setTargetButton, theme} ) => {
+    
     return (
+
         <div className="header-container container d d-flex flex-column pt-4" >
+        
             <h1>typing-app</h1>
 
             <div className="container d d-flex justify-content-between align-items-center py-4  ">
@@ -12,8 +15,8 @@ const Header = ( {  handleGameLength, isGameStarted,isGameFinished,seconds,setSe
             </div>
 
         </div>
-    )
-}
+    );
+};//component returns : Buttons, Timer components
 
 
-export default Header
+export default Header; //exporting component

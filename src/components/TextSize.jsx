@@ -1,4 +1,5 @@
-const TextSize = ({handleTextSize}) => {
+const TextSize = ({ handleTextSize }) => {
+
     return(
         <div className="textsize-container container d-flex flex-column gap-3 justify-content-start align-items-center ">
 
@@ -13,8 +14,9 @@ const TextSize = ({handleTextSize}) => {
             <button className="btn border border-2 w-25 fs-6" style={{color : localStorage.getItem('color-theme')}} onClick={() => handleTextSize('fs-6')}>Font-Size 6</button>
 
         </div>
-    )
-}
+
+    );
+};//text size buttons that sends value to handleTextSize in App.jsx
 
 
-export default TextSize
+export default TextSize; //exporting component

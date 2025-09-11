@@ -1,11 +1,11 @@
 const ThemeButtons = ( { handleThemeButtons } ) => {
     
-    const darkTheme = {theme : 'Dark Theme',backgroundColor: 'black', color : 'white'}
-    const lightTheme = {theme : 'Light Theme',backgroundColor : 'white', color: 'black'}
-    const devTheme = {theme : 'Dev Theme',backgroundColor : '#1b2028', color : '#23a9d5'}
-    const matrixTheme = {theme : 'Matrix Theme',backgroundColor : '#000000 ', color : '#15ff00'}
-    const vsCodeTheme = {theme : 'VsCode Theme',backgroundColor: '#1e1e1e', color : 'white'}
-    const creamsicle = {theme : 'CreamSicle Theme',backgroundColor: '#ff9869' , color : 'white'}
+    const darkTheme = {theme : 'Dark Theme',backgroundColor: 'black', color : 'white'}; //object for theme
+    const lightTheme = {theme : 'Light Theme',backgroundColor : 'white', color: 'black'}; //object for theme
+    const devTheme = {theme : 'Dev Theme',backgroundColor : '#1b2028', color : '#23a9d5'}; //object for theme
+    const matrixTheme = {theme : 'Matrix Theme',backgroundColor : '#000000 ', color : '#15ff00'}; //object for theme
+    const vsCodeTheme = {theme : 'VsCode Theme',backgroundColor: '#1e1e1e', color : 'white'}; //object for theme
+    const creamsicle = {theme : 'CreamSicle Theme',backgroundColor: '#ff9869' , color : 'white'}; //object for theme
     
 
     return(
@@ -21,9 +21,10 @@ const ThemeButtons = ( { handleThemeButtons } ) => {
             <button style={{background : creamsicle.backgroundColor,color : creamsicle.color}} className="creamsicle-theme-btn btn btn-md border border-1 w-25" onClick={() => handleThemeButtons(creamsicle)}>{creamsicle.theme}</button>
            
         </div>
+
     );
-};
+};//buttons that sends value to handleThemeButtons function in App.jsx; buttons are styled based on what theme they set to app
 
 
 
-export default ThemeButtons
+export default ThemeButtons; //exporting component

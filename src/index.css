@@ -3,14 +3,14 @@
     top: 13vh;
     display: flex;
     height: 50px;
-}
+}/*sets focused-container's position and height*/
 
 .wrapper-container {
   display: inline-block;
   font-family: monospace; 
   white-space: pre-wrap;  
   line-height: 1.5;
-}
+}/*sets wrapper-container line-height and font-family so every letter will be same size*/
 
 .wrapper-container > * {
   position: relative;
@@ -18,27 +18,27 @@
   left: 0;
   width: 100%; 
   height: 100%;
-}
+}/*sets every wrapper-container element's positions */
+
 .wrapper-container span {
   display: inline-block; 
   min-width: 1ch;         
   text-align: center;
-}
+}/*sets wrapper-container's spans elements size and text aligments*/
 
 .words-container {
   z-index: 0; 
   color: gray;
-  height: auto;
-}
+}/*sets background index to zero and text color*/
  
 .inserted-container {
   z-index: 1; 
-}
+}/*sets background index to one*/
 
 .inputs {
   z-index: 1; 
   height: 40px;
-}
+}/*sets background index to one and its height*/
 
 .line {
   position: absolute;
@@ -46,22 +46,20 @@
   left: 0;
   width: 100%;
   height: 100%;
-}
+}/*sets line's position and size*/
 
-.inserted-container span {
-    border: none;
-}
 
 .theme-buttons-container {
   overflow-y: auto;
   height: 500px;
-}
+}/*makes theme-buttons-container scrollable with max height*/
+
 .footer-btn:hover{
   border-bottom: 1px solid ;
   cursor: pointer;
-}
+}/*styles footer-btn when hover with border and cursor*/
 
 .theme-container {
    scrollbar-color: black white;
    scrollbar-width: thin;
-}
+}/*styles scrollbar for theme-container*/

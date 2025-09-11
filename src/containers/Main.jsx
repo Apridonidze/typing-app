@@ -1,5 +1,4 @@
-
-import Game from "./Game";
+import Game from "./Game";//importing component from ./containers
 
 const Main = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , inserted , setIncorrectCount, setIsGameStarted, isGameStarted, isWordsFetched, isFocused, setIsFocused ,divRef,input ,setInput,setTarget,target, correctCount, incorrectCount, fontSize} ) => {
 
@@ -13,7 +12,7 @@ const Main = ( { words ,setIsGameFinished, setCorrectCount ,setInserted , insert
         </div>
         
     );
-};
+};//checks if isWordsFetched state true , if so it returns Game component else returns h1 text
 
 
-export default Main;
+export default Main;//exporting component
