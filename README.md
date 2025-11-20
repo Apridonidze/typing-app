@@ -10,9 +10,6 @@ Typing App is a simple typing game that lets you practice typing with custom the
 
 ## Images
 
-
-![Alt text](./design/Screenshot%202025-08-22%20193707.png)
-![Alt text](./design/Screenshot%202025-10-18%20121918.png)
 ![Alt text](./design/Screenshot%202025-11-19%20164828.png)
 ![Alt text](./design/Screenshot%202025-11-19%20164843.png)
 ![Alt text](./design/Screenshot%202025-11-19%20164904.png)
