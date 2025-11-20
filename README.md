@@ -8,6 +8,16 @@ Typing App is a simple typing game that lets you practice typing with custom the
 - Real-time typing practice and tracking  
 - View current version features and planned updates  
 
+## Images
+
+
+![Alt text](./design/Screenshot%202025-08-22%20193707.png)
+![Alt text](./design/Screenshot%202025-10-18%20121918.png)
+![Alt text](./design/Screenshot%202025-11-19%20164828.png)
+![Alt text](./design/Screenshot%202025-11-19%20164843.png)
+![Alt text](./design/Screenshot%202025-11-19%20164904.png)
+![Alt text](./design/Screenshot%202025-11-19%20164937.png)
+
 ## Technologies Used
 
 - React  
