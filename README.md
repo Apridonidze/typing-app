@@ -10,9 +10,9 @@ Typing App is a simple typing game that lets you practice typing with custom the
 
 ## Technologies Used
 
--**Frontend:** React, Bootstrap, Css 
--**Backend:** Node.js, Express.js
--**Other Tools:** Git, GitHub
+- **Frontend:** React, Bootstrap, Css 
+- **Backend:** Node.js, Express.js
+- **Other Tools:** Git, GitHub
 
 
 ## Images
