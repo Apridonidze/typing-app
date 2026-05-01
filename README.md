@@ -6,7 +6,14 @@ Typing App is a simple typing game that lets you practice typing with custom the
 
 - Custom themes and font sizes that are saved locally  
 - Real-time typing practice and tracking  
-- View current version features and planned updates  
+- View current version features and planned updates
+
+## Technologies Used
+
+-**Frontend:** React, Bootstrap, Css 
+-**Backend:** Node.js, Express.js
+-**Other Tools:** Git, GitHub
+
 
 ## Images
 
@@ -15,52 +22,6 @@ Typing App is a simple typing game that lets you practice typing with custom the
 ![Alt text](./design/Screenshot%202025-11-19%20164904.png)
 ![Alt text](./design/Screenshot%202025-11-19%20164937.png)
 
-## Technologies Used
-
-- React  
-- Bootstrap  
-- Node.js
-
-- ## Structure
-- Typing-App/
-├── backend/
-│ ├── .env
-│ ├── package-lock.json
-│ ├── package.json
-│ ├── server.js
-│ └── words.json
-├── src/
-│ ├── assets/
-│ │ └── img/react.svg
-│ ├── components/
-│ │ ├── Buttons.jsx
-│ │ ├── Controls.jsx
-│ │ ├── Focused.jsx
-│ │ ├── FooterBtn.jsx
-│ │ ├── RefreshBtn.jsx
-│ │ ├── TextSize.jsx
-│ │ ├── ThemeButtons.jsx
-│ │ ├── Timer.jsx
-│ │ └── Words.jsx
-│ ├── containers/
-│ │ ├── App.jsx
-│ │ ├── Final.jsx
-│ │ ├── Footer.jsx
-│ │ ├── Game.jsx
-│ │ ├── Header.jsx
-│ │ ├── Main.jsx
-│ │ ├── Theme.jsx
-│ │ ├── Versions.jsx
-│ │ └── Wrapper.jsx
-│ ├── index.css
-│ ├── main.jsx
-│ └── index.html
-├── .gitignore
-├── eslint.config.js
-├── package.json
-├── package-lock.json
-├── README.md
-└── vite.config.js
 
 ## Installation
 
